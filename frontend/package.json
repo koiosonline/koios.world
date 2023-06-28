@@ -2,7 +2,9 @@
   "name": "frontend",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start:app": "nx serve app"
+  },
   "private": true,
   "dependencies": {
     "@nrwl/next": "15.6.3",
