@@ -19,6 +19,19 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::chapter.chapter"
+    },
+    "Literature": {
+      "type": "richtext"
+    },
+    "Quiz": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.quiz"
+    },
+    "FurtherReadings": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.call-to-action"
     }
   }
 }

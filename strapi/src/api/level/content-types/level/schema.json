@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "chapters",
+  "collectionName": "levels",
   "info": {
-    "singularName": "chapter",
-    "pluralName": "chapters",
-    "displayName": "Chapter",
+    "singularName": "level",
+    "pluralName": "levels",
+    "displayName": "Level",
     "description": ""
   },
   "options": {
@@ -12,13 +12,14 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Chapter": {
-      "type": "string"
+    "Name": {
+      "type": "string",
+      "required": true
     },
-    "level": {
+    "course": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::level.level"
+      "target": "api::course.course"
     }
   }
 }

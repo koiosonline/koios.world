@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_content_quiz_answers",
+  "info": {
+    "displayName": "_QuizAnswer"
+  },
+  "options": {},
+  "attributes": {
+    "Answer": {
+      "type": "string",
+      "required": true
+    },
+    "IsCorrect": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}
