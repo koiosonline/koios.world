@@ -18,8 +18,16 @@
     },
     "course": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::course.course"
+      "relation": "manyToOne",
+      "target": "api::course.course",
+      "private": true,
+      "inversedBy": "levels"
+    },
+    "chapters": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::chapter.chapter",
+      "mappedBy": "level"
     }
   }
 }

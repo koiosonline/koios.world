@@ -4,12 +4,15 @@
   "license": "MIT",
   "scripts": {
     "start:app": "nx serve app",
+    "start:graphql-sandbox": "node scripts/graphql-sandbox/sandbox.js",
+    "===== BUILD =====": "",
     "build:app": "nx build app"
   },
   "private": true,
   "dependencies": {
     "@nrwl/next": "15.6.3",
     "next": "13.1.1",
+    "openurl": "^1.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tslib": "^2.3.0"
