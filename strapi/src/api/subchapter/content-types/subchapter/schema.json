@@ -15,11 +15,6 @@
     "Subchapter": {
       "type": "string"
     },
-    "chapter": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::chapter.chapter"
-    },
     "Literature": {
       "type": "richtext"
     },
@@ -32,6 +27,13 @@
       "type": "component",
       "repeatable": true,
       "component": "content.call-to-action"
+    },
+    "chapter": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::chapter.chapter",
+      "private": true,
+      "inversedBy": "subchapters"
     }
   }
 }

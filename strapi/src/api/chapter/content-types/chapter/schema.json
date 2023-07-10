@@ -17,8 +17,16 @@
     },
     "level": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::level.level"
+      "relation": "manyToOne",
+      "target": "api::level.level",
+      "private": true,
+      "inversedBy": "chapters"
+    },
+    "subchapters": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::subchapter.subchapter",
+      "mappedBy": "chapter"
     }
   }
 }
