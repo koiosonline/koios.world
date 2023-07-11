@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Chapter": {
+    "Name": {
       "type": "string"
     },
     "level": {
