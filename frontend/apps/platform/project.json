@@ -1,53 +1,52 @@
 {
-  "name": "app",
+  "name": "platform",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/app",
+  "sourceRoot": "apps/platform",
   "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@nrwl/next:build",
+      "executor": "@nx/next:build",
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "root": "apps/app",
-        "outputPath": "dist/apps/app"
+        "outputPath": "dist/apps/platform"
       },
       "configurations": {
         "development": {
-          "outputPath": "apps/app"
+          "outputPath": "apps/platform"
         },
         "production": {}
       }
     },
     "serve": {
-      "executor": "@nrwl/next:server",
+      "executor": "@nx/next:server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "app:build",
+        "buildTarget": "platform:build",
         "dev": true
       },
       "configurations": {
         "development": {
-          "buildTarget": "app:build:development",
+          "buildTarget": "platform:build:development",
           "dev": true
         },
         "production": {
-          "buildTarget": "app:build:production",
+          "buildTarget": "platform:build:production",
           "dev": false
         }
       }
     },
     "export": {
-      "executor": "@nrwl/next:export",
+      "executor": "@nx/next:export",
       "options": {
-        "buildTarget": "app:build:production"
+        "buildTarget": "platform:build:production"
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/app/jest.config.ts",
+        "jestConfig": "apps/platform/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
@@ -58,10 +57,10 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/app/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["apps/platform/**/*.{ts,tsx,js,jsx}"]
       }
     }
   },
