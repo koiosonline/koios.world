@@ -1,4 +1,5 @@
 import './global.css';
+import "../assets/styles/globals.css";
 
 export const metadata = {
   title: 'Welcome to platform',
