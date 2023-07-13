@@ -14,9 +14,7 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {
-      "@frontend/jsx-core": ["libs/jsx-core/src/index.ts"]
-    },
+    "paths": {}
   },
   "exclude": ["node_modules", "tmp"]
 }
