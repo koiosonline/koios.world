@@ -10,8 +10,10 @@
     "start:production": "NODE_ENV=production strapi start",
     "build": "strapi build",
     "strapi": "strapi",
-    "export": "strapi export --file strapi-export --env production",
-    "export:production": "NODE_ENV=production strapi export --file strapi-export-prod --key %ENCRYPTION_KEY%"
+    "export": "strapi export --file strapi-export",
+    "export:production": "NODE_ENV=production strapi export --file strapi-export-prod --key %ENCRYPTION_KEY%",
+    "import": "strapi import --file strapi-export.tar.gz",
+    "import:production": "NODE_ENV=production strapi import --file strapi-export-prod.tar.gz.enc"
   },
   "dependencies": {
     "@strapi/plugin-graphql": "^4.11.1",
