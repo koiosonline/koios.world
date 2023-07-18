@@ -13,7 +13,7 @@ type LayoutType = {
 const koiosDrawerSettingKey = 'KoiosApp.DrawerIsUnfolded';
 
 export const AppLayout = ({ children }: LayoutType) => {
-  const storedDrawerSetting = localStorage.getItem(koiosDrawerSettingKey);
+  const storedDrawerSetting = typeof window !== 'undefined' ? localStorage.getItem(koiosDrawerSettingKey) : undefined;
   const drawerSetting = storedDrawerSetting ? JSON.parse(storedDrawerSetting) : true;
   const [isUnfolded, setIsUnfolded] = useState<boolean>(drawerSetting);
 
@@ -23,7 +23,10 @@ export const AppLayout = ({ children }: LayoutType) => {
 
   const toggleDrawer = () => {
     setIsUnfolded(() => !isUnfolded);
-    localStorage.setItem(koiosDrawerSettingKey, JSON.stringify(!isUnfolded));
+
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(koiosDrawerSettingKey, JSON.stringify(!isUnfolded));
+    }
   };
 
   useEffect(() => {
