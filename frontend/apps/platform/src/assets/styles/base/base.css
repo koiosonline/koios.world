@@ -1,0 +1,13 @@
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  html {
+    @apply h-full;
+  }
+
+  body {
+    @apply flex flex-col min-h-full h-full;
+  }
+}

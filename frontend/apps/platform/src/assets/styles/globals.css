@@ -4,3 +4,4 @@
 @import "tailwindcss/utilities";
 
 /* Import Custom CSS */
+@import "./base/base.css";
