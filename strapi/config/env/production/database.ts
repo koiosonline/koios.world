@@ -13,9 +13,7 @@ export default ({ env }) => ({
       database,
       user,
       password,
-      ssl: {
-        ca: env('DATABASE_CA'),
-      },
+      ssl: { rejectUnauthorized: false }
     },
       debug: false,
   },
