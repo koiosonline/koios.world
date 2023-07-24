@@ -18,11 +18,11 @@ const server = http.createServer((request, response) => {
         .replace('this_endpoint', 'Content')
         .replace(
           'replace_with_endpoint',
-          process.env.GRAPHQL_CONTENT_SCHEME_URL
+          process.env.GRAPHQL_CONTENT_SCHEME_URL_PRODUCTION
         )
         .replace(
           'replace_with_bearer',
-          process.env.GRAPHQL_CONTENT_SCHEME_AUTH_HEADER
+          process.env.GRAPHQL_CONTENT_SCHEME_AUTH_HEADER_PRODUCTION
         )
     );
     response.end();
