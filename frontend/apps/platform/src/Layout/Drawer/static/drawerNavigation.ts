@@ -18,11 +18,11 @@ export const drawerNavigation: DrawerNavigationType = {
         href: '/',
         icon: 'layer-group'
       },
-      {
-        name: 'My profile',
-        href: '/my-profile',
-        icon: 'user'
-      }
+      // {
+      //   name: 'My profile',
+      //   href: '/my-profile',
+      //   icon: 'user'
+      // }
     ],
     Learn: [
       {
@@ -30,29 +30,29 @@ export const drawerNavigation: DrawerNavigationType = {
         href: '/courses',
         icon: 'earth'
       },
-      {
-        name: 'Join community',
-        href: '/join-community',
-        icon: 'users'
-      }
+      // {
+      //   name: 'Join community',
+      //   href: '/join-community',
+      //   icon: 'users'
+      // }
     ],
-    Earn: [
-      {
-        name: 'Rewards centrum',
-        href: '/rewards',
-        icon: 'trophy'
-      },
-      {
-        name: 'Badges',
-        href: '/badges',
-        icon: 'award'
-      }
-    ],
-    Connect: [
-      {
-        name: 'Leaderboard',
-        href: '/leaderboard',
-        icon: 'chart-simple'
-      }
-    ]
+    // Earn: [
+    //   {
+    //     name: 'Rewards centrum',
+    //     href: '/rewards',
+    //     icon: 'trophy'
+    //   },
+    //   {
+    //     name: 'Badges',
+    //     href: '/badges',
+    //     icon: 'award'
+    //   }
+    // ],
+    // Connect: [
+    //   {
+    //     name: 'Leaderboard',
+    //     href: '/leaderboard',
+    //     icon: 'chart-simple'
+    //   }
+    // ]
   };

@@ -1,9 +1,11 @@
+import { Greeting } from "../Greeting/Greeting";
 
-export default async function Index() {
+const Page = () => {
   return (
-    <div>
-      <h1 className="text-red-500">Page</h1>
-      hello
+    <div className="p-4">
+      <Greeting />
     </div>
   );
 }
+
+export default Page;

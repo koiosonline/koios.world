@@ -8,6 +8,6 @@
   }
 
   body {
-    @apply flex flex-col min-h-full h-full;
+    @apply flex flex-col min-h-full h-full bg-skin-fill text-skin-base;
   }
 }

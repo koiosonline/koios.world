@@ -47,7 +47,7 @@ export const AppLayout = ({ children }: LayoutType) => {
       <Header isUnfolded={isUnfolded} toggleDrawer={toggleDrawer} isMobile={sizes.isMobile} />
       <Drawer isUnfolded={isUnfolded} isMobile={sizes.isMobile} />
       <main
-        className={`mt-12 h-full flex grow flex-col break-words bg-gray-50 p-4 text-slate-500 duration-300 ease-in-out ${
+        className={`mt-14 h-full flex grow flex-col break-words duration-300 ease-in-out ${
           isUnfolded && !sizes.isMobile ? 'ml-72  w-[calc(100%-theme(space.72))]' : ''
         }`}
       >
