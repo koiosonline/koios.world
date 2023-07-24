@@ -18,12 +18,13 @@ export default [
     name: "strapi::cors",
     config: {
       enabled: true,
-      // header: "*",
+      header: "*",
       origin: [
         "https://app.koios.world/",
         "https://dev.koios.world/",
         "http://localhost:4200",
         "http://localhost:4201/",
+        "studio.apollographql.com"
       ],
     },
   },
