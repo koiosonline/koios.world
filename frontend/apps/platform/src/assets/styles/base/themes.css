@@ -1,0 +1,19 @@
+/* Colors are defined in RGB value and will be transformed to RGBA by the withOpacity function in tailwind.config.js for opacity support */
+
+@layer base {
+  :root,
+  .theme-light {
+    --color-text-base: 100, 116, 139;
+    /* --color-text-muted: #a0aec0; */
+    /* --color-text-inverted: #1a202c; */
+    --color-fill: 249, 250, 251;
+    /* --color-button-accent: #ffffff; */
+    /* --color-button-accent-hover: #ffffff; */
+    /* --color-button-muted: #a0aec0; */
+  }
+  
+  .theme-dark {
+    --color-text-base: 16, 3, 3;
+    --color-fill: 224, 1, 1;
+  }
+}

@@ -14,7 +14,18 @@ export default [
       },
     },
   },
-  "strapi::cors",
+  {
+    name: "strapi::cors",
+    config: {
+      enabled: true,
+      header: "*",
+      origin: [
+        "https://app.koios.world/",
+        "https://dev.koios.world/",
+        "http://localhost:4200",
+      ],
+    },
+  },
   "strapi::poweredBy",
   "strapi::logger",
   "strapi::query",

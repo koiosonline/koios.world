@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@frontend/core": ["libs/core/src/index.ts"],
       "@frontend/jsx-core": ["libs/jsx-core/src/index.ts"]
     }
   },

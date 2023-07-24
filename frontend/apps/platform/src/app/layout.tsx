@@ -1,5 +1,5 @@
-import { AppLayout } from '../Layout/AppLayout';
 import '../assets/styles/globals.css';
+import { AppProviders } from './providers/AppProviders';
 
 export const metadata = {
   title: 'Welcome to platform',
@@ -11,10 +11,11 @@ type RootLayoutProps = {
 };
 
 export default function RootLayout({ children }: RootLayoutProps) {
+
   return (
     <html lang="en">
       <body>
-        <AppLayout>{children}</AppLayout>
+        <AppProviders>{children}</AppProviders>
       </body>
     </html>
   );
