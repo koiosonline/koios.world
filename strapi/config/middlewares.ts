@@ -14,6 +14,7 @@ export default [
       },
     },
   },
+  "strapi::poweredBy",
   {
     name: "strapi::cors",
     config: {
@@ -28,7 +29,6 @@ export default [
       ],
     },
   },
-  "strapi::poweredBy",
   "strapi::logger",
   "strapi::query",
   "strapi::body",
