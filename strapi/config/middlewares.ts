@@ -23,6 +23,7 @@ export default [
         "https://app.koios.world/",
         "https://dev.koios.world/",
         "http://localhost:4200",
+        "http://localhost:4201/",
       ],
     },
   },
