@@ -21,13 +21,11 @@ export default [
       enabled: true,
       header: "*",
       origin: [
-        "app.koios.world",
-        "dev.koios.world",
-        "localhost:4200",
-        "localhost:4201",
-        "studio.apollographql.com",
-        "studio.apollographql.com",
-        "content.koios.world"
+        "https://app.koios.world",
+        "https://dev.koios.world",
+        "https://content.koios.world",
+        "http://localhost:4200",
+        "http://localhost:4201"
       ],
     },
   },
