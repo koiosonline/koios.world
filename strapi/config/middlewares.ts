@@ -27,7 +27,8 @@ export default [
         "http://localhost:4201/",
         "studio.apollographql.com",
         "https://studio.apollographql.com",
-        "https://content.koios.world/"
+        "https://content.koios.world/",
+        "https://content.koios.world"
       ],
     },
   },
