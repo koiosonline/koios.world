@@ -8,7 +8,7 @@ const client = new ApolloClient({
   link: new HttpLink({
     uri: process.env.NEXT_PUBLIC_GRAPHQL_CONTENT_SCHEME_URL,
     headers: {
-      Authorization: process.env.NEXT_PUBLIC_GRAPHQL_CONTENT_SCHEME_AUTH_HEADER!
+      Authorization: process.env.NEXT_PUBLIC_GRAPHQL_CONTENT_SCHEME_AUTH_HEADER || ''
     }
   }),
   cache: new InMemoryCache()
