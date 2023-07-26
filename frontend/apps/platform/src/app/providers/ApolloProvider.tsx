@@ -1,11 +1,16 @@
-import { ApolloClient, InMemoryCache, ApolloProvider as Provider } from '@apollo/client';
+import { ApolloClient, HttpLink, InMemoryCache, ApolloProvider as Provider } from '@apollo/client';
 
 type ApolloProviderProps = {
   children: React.ReactNode;
 };
 
 const client = new ApolloClient({
-  uri: process.env.GRAPHQL_CONTENT_SCHEME_URL_PRODUCTION,
+  link: new HttpLink({
+    uri: process.env.NEXT_PUBLIC_GRAPHQL_CONTENT_SCHEME_URL,
+    headers: {
+      Authorization: process.env.NEXT_PUBLIC_GRAPHQL_CONTENT_SCHEME_AUTH_HEADER || ''
+    }
+  }),
   cache: new InMemoryCache()
 });
 
