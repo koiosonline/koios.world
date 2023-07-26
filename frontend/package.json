@@ -6,11 +6,14 @@
     "start:platform": "nx serve platform",
     "start:graphql-sandbox": "node scripts/graphql-sandbox/sandbox.js",
     "===== BUILD =====": "",
-    "build:platform": "nx build platform"
+    "build:platform": "nx build platform",
+    "===== UTILS =====": "",
+    "generate:gql-types": "graphql-codegen --config ./libs/graphql/content/codegen.ts"
   },
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.7.17",
+    "@apollo/server": "^4.8.1",
     "@nx/next": "16.5.1",
     "@reduxjs/toolkit": "^1.9.5",
     "graphql": "^16.7.1",
@@ -23,6 +26,7 @@
   },
   "devDependencies": {
     "@babel/preset-react": "^7.14.5",
+    "@graphql-codegen/cli": "^5.0.0",
     "@nx/cypress": "16.5.1",
     "@nx/eslint-plugin": "16.5.1",
     "@nx/jest": "16.5.1",

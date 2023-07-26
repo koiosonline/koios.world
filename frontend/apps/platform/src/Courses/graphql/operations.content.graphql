@@ -1,0 +1,9 @@
+ query GetCourses {
+    courses {
+      data {
+        attributes {
+          Name
+        }
+      }
+    }
+  }

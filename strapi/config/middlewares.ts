@@ -25,7 +25,8 @@ export default [
         "https://dev.koios.world",
         "https://content.koios.world",
         "http://localhost:4200",
-        "http://localhost:4201"
+        "http://localhost:4201",
+        "http://localhost:1337"
       ],
     },
   },
