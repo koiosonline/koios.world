@@ -1,4 +1,4 @@
-import { Greeting } from "../Greeting/Greeting";
+import { Greeting } from "../../Greeting/Greeting";
 
 const Page = () => {
   return (

@@ -4,8 +4,8 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 (() => {
-  if (!process.env.NEXT_PUBLIC_GRAPHQL_CONTENT_SCHEME_URL) {
-    throw new Error('NEXT_PUBLIC_GRAPHQL_CONTENT_SCHEME_URL is not defined');
+  if (!process.env.NEXT_PUBLIC_GRAPHQL_CONTENT_SCHEME_URL_LOCAL) {
+    throw new Error('NEXT_PUBLIC_GRAPHQL_CONTENT_SCHEME_URL_LOCAL is not defined');
   }
 
   if (!process.env.NEXT_PUBLIC_GRAPHQL_CONTENT_SCHEME_AUTH_HEADER) {
@@ -17,7 +17,7 @@ const config: CodegenConfig = {
   schema: [
     {
       // Local address instead of localhost to avoid schema loading issues
-      ['http://127.0.0.1:1337/graphql']: {
+      [process.env.NEXT_PUBLIC_GRAPHQL_CONTENT_SCHEME_URL_LOCAL]: {
         headers: {
           Authorization: process.env.NEXT_PUBLIC_GRAPHQL_CONTENT_SCHEME_AUTH_HEADER || ''
         }

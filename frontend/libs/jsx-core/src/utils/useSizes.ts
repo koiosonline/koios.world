@@ -1,3 +1,5 @@
+"use client"
+
 import { useEffect, useRef, useState } from 'react';
 import { environment } from './environment';
 import useDebounce from './useDebounce';

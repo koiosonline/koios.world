@@ -1,0 +1,10 @@
+query GetTranslations($locale: I18NLocaleCode, $pagination: PaginationArg) {
+  translations(locale: $locale, pagination: $pagination) {
+    data {
+      attributes {
+        Translation
+        Identifier
+      }
+    }
+  }
+}
