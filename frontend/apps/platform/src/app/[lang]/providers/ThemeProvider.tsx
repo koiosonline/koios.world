@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { LocalStorageKeyTypes, ThemeTypes } from '@frontend/core';
-import { useAppDispatch, useAppSelector } from '../../store/hooks/storeHooks';
-import { settingsSlice } from '../../Settings/state/settingsSlice';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks/storeHooks';
+import { settingsSlice } from '../../../Settings/state/settingsSlice';
 
 type ThemeProviderProps = {
   children: React.ReactNode;

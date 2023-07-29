@@ -8,26 +8,27 @@
     "===== BUILD =====": "",
     "build:platform": "nx build platform",
     "===== UTILS =====": "",
-    "generate:gql-types": "graphql-codegen --config ./libs/graphql/content/codegen.ts"
+    "generate:gql-types": "graphql-codegen --config ./libs/graphql/content/codegen.ts",
+    "generate:translations": "ts-node ./scripts/generate-translations/index.ts"
   },
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.7.17",
-    "@apollo/server": "^4.8.1",
     "@nx/next": "16.5.1",
     "@reduxjs/toolkit": "^1.9.5",
     "graphql": "^16.7.1",
+    "markdown-to-jsx": "^7.2.1",
     "next": "13.4.1",
     "openurl": "^1.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-intl": "^6.4.4",
     "react-redux": "^8.1.1",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.14.5",
     "@graphql-codegen/cli": "5.0.0",
-    "@graphql-codegen/client-preset": "4.1.0",
     "@graphql-codegen/near-operation-file-preset": "^2.5.0",
     "@graphql-codegen/typed-document-node": "^5.0.1",
     "@graphql-codegen/typescript-operations": "^4.0.1",

@@ -1,13 +1,13 @@
 "use client"
 
 import Image from 'next/image';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { DrawerLink } from './DrawerLink';
 import {
   DrawerNavigationItemType,
   drawerNavigation,
 } from './static/drawerNavigation';
+import { LocalizedLink } from '@frontend/jsx-core';
 
 type DrawerType = {
   isUnfolded?: boolean;
@@ -28,14 +28,14 @@ export const Drawer = (props: DrawerType) => {
       } ${isUnfolded ? 'translate-x-0' : '-translate-x-full'}`}
     >
       {!isMobile && (
-        <Link href="/" className="container mx-auto mt-16 mb-10 w-fit">
+        <LocalizedLink href="/" className="container mx-auto mt-16 mb-10 w-fit">
           <Image
-            src="assets/images/logo/koios-logo.svg"
+            src="/assets/images/logo/koios-logo.svg"
             alt="Koios Logo"
             width={150}
             height={100}
           />
-        </Link>
+        </LocalizedLink>
       )}
 
       {/* {isMobile && (

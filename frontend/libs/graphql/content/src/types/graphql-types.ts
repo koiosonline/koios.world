@@ -16,6 +16,7 @@ export type Scalars = {
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
   DateTime: { input: any; output: any; }
+  I18NLocaleCode: { input: any; output: any; }
   JSON: { input: any; output: any; }
   Upload: { input: any; output: any; }
 };
@@ -285,7 +286,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']['input']>;
 };
 
-export type GenericMorph = Chapter | ComponentContentCallToAction | ComponentContentQuiz | ComponentContentQuizAnswer | Course | I18NLocale | Level | Subchapter | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = Chapter | ComponentContentCallToAction | ComponentContentQuiz | ComponentContentQuizAnswer | Course | I18NLocale | Level | Subchapter | Translation | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -462,6 +463,8 @@ export type Mutation = {
   createCourse?: Maybe<CourseEntityResponse>;
   createLevel?: Maybe<LevelEntityResponse>;
   createSubchapter?: Maybe<SubchapterEntityResponse>;
+  createTranslation?: Maybe<TranslationEntityResponse>;
+  createTranslationLocalization?: Maybe<TranslationEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   createUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Create a new role */
@@ -472,6 +475,7 @@ export type Mutation = {
   deleteCourse?: Maybe<CourseEntityResponse>;
   deleteLevel?: Maybe<LevelEntityResponse>;
   deleteSubchapter?: Maybe<SubchapterEntityResponse>;
+  deleteTranslation?: Maybe<TranslationEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Delete an existing role */
@@ -494,6 +498,7 @@ export type Mutation = {
   updateFileInfo: UploadFileEntityResponse;
   updateLevel?: Maybe<LevelEntityResponse>;
   updateSubchapter?: Maybe<SubchapterEntityResponse>;
+  updateTranslation?: Maybe<TranslationEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Update an existing role */
@@ -528,6 +533,19 @@ export type MutationCreateLevelArgs = {
 
 export type MutationCreateSubchapterArgs = {
   data: SubchapterInput;
+};
+
+
+export type MutationCreateTranslationArgs = {
+  data: TranslationInput;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
+export type MutationCreateTranslationLocalizationArgs = {
+  data?: InputMaybe<TranslationInput>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
 };
 
 
@@ -568,6 +586,12 @@ export type MutationDeleteLevelArgs = {
 
 export type MutationDeleteSubchapterArgs = {
   id: Scalars['ID']['input'];
+};
+
+
+export type MutationDeleteTranslationArgs = {
+  id: Scalars['ID']['input'];
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
 };
 
 
@@ -661,6 +685,13 @@ export type MutationUpdateSubchapterArgs = {
 };
 
 
+export type MutationUpdateTranslationArgs = {
+  data: TranslationInput;
+  id: Scalars['ID']['input'];
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
 export type MutationUpdateUploadFileArgs = {
   data: UploadFileInput;
   id: Scalars['ID']['input'];
@@ -726,6 +757,8 @@ export type Query = {
   me?: Maybe<UsersPermissionsMe>;
   subchapter?: Maybe<SubchapterEntityResponse>;
   subchapters?: Maybe<SubchapterEntityResponseCollection>;
+  translation?: Maybe<TranslationEntityResponse>;
+  translations?: Maybe<TranslationEntityResponseCollection>;
   uploadFile?: Maybe<UploadFileEntityResponse>;
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>;
   uploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -797,6 +830,20 @@ export type QuerySubchaptersArgs = {
   filters?: InputMaybe<SubchapterFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type QueryTranslationArgs = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
+export type QueryTranslationsArgs = {
+  filters?: InputMaybe<TranslationFiltersInput>;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+  pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
@@ -946,6 +993,63 @@ export type SubchapterInput = {
 export type SubchapterRelationResponseCollection = {
   __typename?: 'SubchapterRelationResponseCollection';
   data: Array<SubchapterEntity>;
+};
+
+export type Translation = {
+  __typename?: 'Translation';
+  Identifier: Scalars['String']['output'];
+  Translation: Scalars['String']['output'];
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  locale?: Maybe<Scalars['String']['output']>;
+  localizations?: Maybe<TranslationRelationResponseCollection>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+
+export type TranslationLocalizationsArgs = {
+  filters?: InputMaybe<TranslationFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type TranslationEntity = {
+  __typename?: 'TranslationEntity';
+  attributes?: Maybe<Translation>;
+  id?: Maybe<Scalars['ID']['output']>;
+};
+
+export type TranslationEntityResponse = {
+  __typename?: 'TranslationEntityResponse';
+  data?: Maybe<TranslationEntity>;
+};
+
+export type TranslationEntityResponseCollection = {
+  __typename?: 'TranslationEntityResponseCollection';
+  data: Array<TranslationEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type TranslationFiltersInput = {
+  Identifier?: InputMaybe<StringFilterInput>;
+  Translation?: InputMaybe<StringFilterInput>;
+  and?: InputMaybe<Array<InputMaybe<TranslationFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  locale?: InputMaybe<StringFilterInput>;
+  localizations?: InputMaybe<TranslationFiltersInput>;
+  not?: InputMaybe<TranslationFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<TranslationFiltersInput>>>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type TranslationInput = {
+  Identifier?: InputMaybe<Scalars['String']['input']>;
+  Translation?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type TranslationRelationResponseCollection = {
+  __typename?: 'TranslationRelationResponseCollection';
+  data: Array<TranslationEntity>;
 };
 
 export type UploadFile = {
@@ -1391,7 +1495,7 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 
 /** Mapping of union types */
 export type ResolversUnionTypes<RefType extends Record<string, unknown>> = ResolversObject<{
-  GenericMorph: ( Chapter ) | ( ComponentContentCallToAction ) | ( ComponentContentQuiz ) | ( ComponentContentQuizAnswer ) | ( Course ) | ( I18NLocale ) | ( Level ) | ( Subchapter ) | ( Omit<UploadFile, 'related'> & { related?: Maybe<Array<Maybe<RefType['GenericMorph']>>> } ) | ( UploadFolder ) | ( UsersPermissionsPermission ) | ( UsersPermissionsRole ) | ( UsersPermissionsUser );
+  GenericMorph: ( Chapter ) | ( ComponentContentCallToAction ) | ( ComponentContentQuiz ) | ( ComponentContentQuizAnswer ) | ( Course ) | ( I18NLocale ) | ( Level ) | ( Subchapter ) | ( Translation ) | ( Omit<UploadFile, 'related'> & { related?: Maybe<Array<Maybe<RefType['GenericMorph']>>> } ) | ( UploadFolder ) | ( UsersPermissionsPermission ) | ( UsersPermissionsRole ) | ( UsersPermissionsUser );
 }>;
 
 
@@ -1428,6 +1532,7 @@ export type ResolversTypes = ResolversObject<{
   FloatFilterInput: FloatFilterInput;
   GenericMorph: ResolverTypeWrapper<ResolversUnionTypes<ResolversTypes>['GenericMorph']>;
   I18NLocale: ResolverTypeWrapper<I18NLocale>;
+  I18NLocaleCode: ResolverTypeWrapper<Scalars['I18NLocaleCode']['output']>;
   I18NLocaleEntity: ResolverTypeWrapper<I18NLocaleEntity>;
   I18NLocaleEntityResponse: ResolverTypeWrapper<I18NLocaleEntityResponse>;
   I18NLocaleEntityResponseCollection: ResolverTypeWrapper<I18NLocaleEntityResponseCollection>;
@@ -1460,6 +1565,13 @@ export type ResolversTypes = ResolversObject<{
   SubchapterFiltersInput: SubchapterFiltersInput;
   SubchapterInput: SubchapterInput;
   SubchapterRelationResponseCollection: ResolverTypeWrapper<SubchapterRelationResponseCollection>;
+  Translation: ResolverTypeWrapper<Translation>;
+  TranslationEntity: ResolverTypeWrapper<TranslationEntity>;
+  TranslationEntityResponse: ResolverTypeWrapper<TranslationEntityResponse>;
+  TranslationEntityResponseCollection: ResolverTypeWrapper<TranslationEntityResponseCollection>;
+  TranslationFiltersInput: TranslationFiltersInput;
+  TranslationInput: TranslationInput;
+  TranslationRelationResponseCollection: ResolverTypeWrapper<TranslationRelationResponseCollection>;
   Upload: ResolverTypeWrapper<Scalars['Upload']['output']>;
   UploadFile: ResolverTypeWrapper<Omit<UploadFile, 'related'> & { related?: Maybe<Array<Maybe<ResolversTypes['GenericMorph']>>> }>;
   UploadFileEntity: ResolverTypeWrapper<UploadFileEntity>;
@@ -1536,6 +1648,7 @@ export type ResolversParentTypes = ResolversObject<{
   FloatFilterInput: FloatFilterInput;
   GenericMorph: ResolversUnionTypes<ResolversParentTypes>['GenericMorph'];
   I18NLocale: I18NLocale;
+  I18NLocaleCode: Scalars['I18NLocaleCode']['output'];
   I18NLocaleEntity: I18NLocaleEntity;
   I18NLocaleEntityResponse: I18NLocaleEntityResponse;
   I18NLocaleEntityResponseCollection: I18NLocaleEntityResponseCollection;
@@ -1567,6 +1680,13 @@ export type ResolversParentTypes = ResolversObject<{
   SubchapterFiltersInput: SubchapterFiltersInput;
   SubchapterInput: SubchapterInput;
   SubchapterRelationResponseCollection: SubchapterRelationResponseCollection;
+  Translation: Translation;
+  TranslationEntity: TranslationEntity;
+  TranslationEntityResponse: TranslationEntityResponse;
+  TranslationEntityResponseCollection: TranslationEntityResponseCollection;
+  TranslationFiltersInput: TranslationFiltersInput;
+  TranslationInput: TranslationInput;
+  TranslationRelationResponseCollection: TranslationRelationResponseCollection;
   Upload: Scalars['Upload']['output'];
   UploadFile: Omit<UploadFile, 'related'> & { related?: Maybe<Array<Maybe<ResolversParentTypes['GenericMorph']>>> };
   UploadFileEntity: UploadFileEntity;
@@ -1695,7 +1815,7 @@ export interface DateTimeScalarConfig extends GraphQLScalarTypeConfig<ResolversT
 }
 
 export type GenericMorphResolvers<ContextType = any, ParentType extends ResolversParentTypes['GenericMorph'] = ResolversParentTypes['GenericMorph']> = ResolversObject<{
-  __resolveType: TypeResolveFn<'Chapter' | 'ComponentContentCallToAction' | 'ComponentContentQuiz' | 'ComponentContentQuizAnswer' | 'Course' | 'I18NLocale' | 'Level' | 'Subchapter' | 'UploadFile' | 'UploadFolder' | 'UsersPermissionsPermission' | 'UsersPermissionsRole' | 'UsersPermissionsUser', ParentType, ContextType>;
+  __resolveType: TypeResolveFn<'Chapter' | 'ComponentContentCallToAction' | 'ComponentContentQuiz' | 'ComponentContentQuizAnswer' | 'Course' | 'I18NLocale' | 'Level' | 'Subchapter' | 'Translation' | 'UploadFile' | 'UploadFolder' | 'UsersPermissionsPermission' | 'UsersPermissionsRole' | 'UsersPermissionsUser', ParentType, ContextType>;
 }>;
 
 export type I18NLocaleResolvers<ContextType = any, ParentType extends ResolversParentTypes['I18NLocale'] = ResolversParentTypes['I18NLocale']> = ResolversObject<{
@@ -1705,6 +1825,10 @@ export type I18NLocaleResolvers<ContextType = any, ParentType extends ResolversP
   updatedAt?: Resolver<Maybe<ResolversTypes['DateTime']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
+
+export interface I18NLocaleCodeScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['I18NLocaleCode'], any> {
+  name: 'I18NLocaleCode';
+}
 
 export type I18NLocaleEntityResolvers<ContextType = any, ParentType extends ResolversParentTypes['I18NLocaleEntity'] = ResolversParentTypes['I18NLocaleEntity']> = ResolversObject<{
   attributes?: Resolver<Maybe<ResolversTypes['I18NLocale']>, ParentType, ContextType>;
@@ -1764,6 +1888,8 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
   createCourse?: Resolver<Maybe<ResolversTypes['CourseEntityResponse']>, ParentType, ContextType, RequireFields<MutationCreateCourseArgs, 'data'>>;
   createLevel?: Resolver<Maybe<ResolversTypes['LevelEntityResponse']>, ParentType, ContextType, RequireFields<MutationCreateLevelArgs, 'data'>>;
   createSubchapter?: Resolver<Maybe<ResolversTypes['SubchapterEntityResponse']>, ParentType, ContextType, RequireFields<MutationCreateSubchapterArgs, 'data'>>;
+  createTranslation?: Resolver<Maybe<ResolversTypes['TranslationEntityResponse']>, ParentType, ContextType, RequireFields<MutationCreateTranslationArgs, 'data'>>;
+  createTranslationLocalization?: Resolver<Maybe<ResolversTypes['TranslationEntityResponse']>, ParentType, ContextType, Partial<MutationCreateTranslationLocalizationArgs>>;
   createUploadFile?: Resolver<Maybe<ResolversTypes['UploadFileEntityResponse']>, ParentType, ContextType, RequireFields<MutationCreateUploadFileArgs, 'data'>>;
   createUploadFolder?: Resolver<Maybe<ResolversTypes['UploadFolderEntityResponse']>, ParentType, ContextType, RequireFields<MutationCreateUploadFolderArgs, 'data'>>;
   createUsersPermissionsRole?: Resolver<Maybe<ResolversTypes['UsersPermissionsCreateRolePayload']>, ParentType, ContextType, RequireFields<MutationCreateUsersPermissionsRoleArgs, 'data'>>;
@@ -1772,6 +1898,7 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
   deleteCourse?: Resolver<Maybe<ResolversTypes['CourseEntityResponse']>, ParentType, ContextType, RequireFields<MutationDeleteCourseArgs, 'id'>>;
   deleteLevel?: Resolver<Maybe<ResolversTypes['LevelEntityResponse']>, ParentType, ContextType, RequireFields<MutationDeleteLevelArgs, 'id'>>;
   deleteSubchapter?: Resolver<Maybe<ResolversTypes['SubchapterEntityResponse']>, ParentType, ContextType, RequireFields<MutationDeleteSubchapterArgs, 'id'>>;
+  deleteTranslation?: Resolver<Maybe<ResolversTypes['TranslationEntityResponse']>, ParentType, ContextType, RequireFields<MutationDeleteTranslationArgs, 'id'>>;
   deleteUploadFile?: Resolver<Maybe<ResolversTypes['UploadFileEntityResponse']>, ParentType, ContextType, RequireFields<MutationDeleteUploadFileArgs, 'id'>>;
   deleteUploadFolder?: Resolver<Maybe<ResolversTypes['UploadFolderEntityResponse']>, ParentType, ContextType, RequireFields<MutationDeleteUploadFolderArgs, 'id'>>;
   deleteUsersPermissionsRole?: Resolver<Maybe<ResolversTypes['UsersPermissionsDeleteRolePayload']>, ParentType, ContextType, RequireFields<MutationDeleteUsersPermissionsRoleArgs, 'id'>>;
@@ -1788,6 +1915,7 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
   updateFileInfo?: Resolver<ResolversTypes['UploadFileEntityResponse'], ParentType, ContextType, RequireFields<MutationUpdateFileInfoArgs, 'id'>>;
   updateLevel?: Resolver<Maybe<ResolversTypes['LevelEntityResponse']>, ParentType, ContextType, RequireFields<MutationUpdateLevelArgs, 'data' | 'id'>>;
   updateSubchapter?: Resolver<Maybe<ResolversTypes['SubchapterEntityResponse']>, ParentType, ContextType, RequireFields<MutationUpdateSubchapterArgs, 'data' | 'id'>>;
+  updateTranslation?: Resolver<Maybe<ResolversTypes['TranslationEntityResponse']>, ParentType, ContextType, RequireFields<MutationUpdateTranslationArgs, 'data' | 'id'>>;
   updateUploadFile?: Resolver<Maybe<ResolversTypes['UploadFileEntityResponse']>, ParentType, ContextType, RequireFields<MutationUpdateUploadFileArgs, 'data' | 'id'>>;
   updateUploadFolder?: Resolver<Maybe<ResolversTypes['UploadFolderEntityResponse']>, ParentType, ContextType, RequireFields<MutationUpdateUploadFolderArgs, 'data' | 'id'>>;
   updateUsersPermissionsRole?: Resolver<Maybe<ResolversTypes['UsersPermissionsUpdateRolePayload']>, ParentType, ContextType, RequireFields<MutationUpdateUsersPermissionsRoleArgs, 'data' | 'id'>>;
@@ -1815,6 +1943,8 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
   me?: Resolver<Maybe<ResolversTypes['UsersPermissionsMe']>, ParentType, ContextType>;
   subchapter?: Resolver<Maybe<ResolversTypes['SubchapterEntityResponse']>, ParentType, ContextType, Partial<QuerySubchapterArgs>>;
   subchapters?: Resolver<Maybe<ResolversTypes['SubchapterEntityResponseCollection']>, ParentType, ContextType, RequireFields<QuerySubchaptersArgs, 'pagination' | 'publicationState' | 'sort'>>;
+  translation?: Resolver<Maybe<ResolversTypes['TranslationEntityResponse']>, ParentType, ContextType, Partial<QueryTranslationArgs>>;
+  translations?: Resolver<Maybe<ResolversTypes['TranslationEntityResponseCollection']>, ParentType, ContextType, RequireFields<QueryTranslationsArgs, 'pagination' | 'sort'>>;
   uploadFile?: Resolver<Maybe<ResolversTypes['UploadFileEntityResponse']>, ParentType, ContextType, Partial<QueryUploadFileArgs>>;
   uploadFiles?: Resolver<Maybe<ResolversTypes['UploadFileEntityResponseCollection']>, ParentType, ContextType, RequireFields<QueryUploadFilesArgs, 'pagination' | 'sort'>>;
   uploadFolder?: Resolver<Maybe<ResolversTypes['UploadFolderEntityResponse']>, ParentType, ContextType, Partial<QueryUploadFolderArgs>>;
@@ -1860,6 +1990,38 @@ export type SubchapterEntityResponseCollectionResolvers<ContextType = any, Paren
 
 export type SubchapterRelationResponseCollectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['SubchapterRelationResponseCollection'] = ResolversParentTypes['SubchapterRelationResponseCollection']> = ResolversObject<{
   data?: Resolver<Array<ResolversTypes['SubchapterEntity']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type TranslationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Translation'] = ResolversParentTypes['Translation']> = ResolversObject<{
+  Identifier?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  Translation?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  createdAt?: Resolver<Maybe<ResolversTypes['DateTime']>, ParentType, ContextType>;
+  locale?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  localizations?: Resolver<Maybe<ResolversTypes['TranslationRelationResponseCollection']>, ParentType, ContextType, RequireFields<TranslationLocalizationsArgs, 'pagination' | 'sort'>>;
+  updatedAt?: Resolver<Maybe<ResolversTypes['DateTime']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type TranslationEntityResolvers<ContextType = any, ParentType extends ResolversParentTypes['TranslationEntity'] = ResolversParentTypes['TranslationEntity']> = ResolversObject<{
+  attributes?: Resolver<Maybe<ResolversTypes['Translation']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['ID']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type TranslationEntityResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['TranslationEntityResponse'] = ResolversParentTypes['TranslationEntityResponse']> = ResolversObject<{
+  data?: Resolver<Maybe<ResolversTypes['TranslationEntity']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type TranslationEntityResponseCollectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['TranslationEntityResponseCollection'] = ResolversParentTypes['TranslationEntityResponseCollection']> = ResolversObject<{
+  data?: Resolver<Array<ResolversTypes['TranslationEntity']>, ParentType, ContextType>;
+  meta?: Resolver<ResolversTypes['ResponseCollectionMeta'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type TranslationRelationResponseCollectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['TranslationRelationResponseCollection'] = ResolversParentTypes['TranslationRelationResponseCollection']> = ResolversObject<{
+  data?: Resolver<Array<ResolversTypes['TranslationEntity']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
@@ -2085,6 +2247,7 @@ export type Resolvers<ContextType = any> = ResolversObject<{
   DateTime?: GraphQLScalarType;
   GenericMorph?: GenericMorphResolvers<ContextType>;
   I18NLocale?: I18NLocaleResolvers<ContextType>;
+  I18NLocaleCode?: GraphQLScalarType;
   I18NLocaleEntity?: I18NLocaleEntityResolvers<ContextType>;
   I18NLocaleEntityResponse?: I18NLocaleEntityResponseResolvers<ContextType>;
   I18NLocaleEntityResponseCollection?: I18NLocaleEntityResponseCollectionResolvers<ContextType>;
@@ -2103,6 +2266,11 @@ export type Resolvers<ContextType = any> = ResolversObject<{
   SubchapterEntityResponse?: SubchapterEntityResponseResolvers<ContextType>;
   SubchapterEntityResponseCollection?: SubchapterEntityResponseCollectionResolvers<ContextType>;
   SubchapterRelationResponseCollection?: SubchapterRelationResponseCollectionResolvers<ContextType>;
+  Translation?: TranslationResolvers<ContextType>;
+  TranslationEntity?: TranslationEntityResolvers<ContextType>;
+  TranslationEntityResponse?: TranslationEntityResponseResolvers<ContextType>;
+  TranslationEntityResponseCollection?: TranslationEntityResponseCollectionResolvers<ContextType>;
+  TranslationRelationResponseCollection?: TranslationRelationResponseCollectionResolvers<ContextType>;
   Upload?: GraphQLScalarType;
   UploadFile?: UploadFileResolvers<ContextType>;
   UploadFileEntity?: UploadFileEntityResolvers<ContextType>;
