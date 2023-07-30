@@ -7,6 +7,7 @@ type LocaleParts = {
 };
 
 const locales = Object.values(SupportedLanguages);
+const defaultLocaleLowercase = defaultLocale.toLowerCase();
 
 const getLocalePartsFrom = ({ pathname, locale }: { pathname?: string; locale?: string }): LocaleParts => {
   const parts = locale ? locale.toLowerCase().split('-') : pathname!.split('/')[1].split('-');
@@ -19,7 +20,7 @@ const getLocalePartsFrom = ({ pathname, locale }: { pathname?: string; locale?: 
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname; 
 
-  const defaultLocaleParts = getLocalePartsFrom({ locale: defaultLocale });
+  const defaultLocaleParts = getLocalePartsFrom({ locale: defaultLocaleLowercase });
   const currentPathnameParts = getLocalePartsFrom({ pathname });
 
   const isMissingValidLocale = locales.every((locale) => {
@@ -29,7 +30,7 @@ export function middleware(request: NextRequest) {
 
   // Rewrite it so next.js will render `/` as if it was `/en-US`
   if (isMissingValidLocale) {
-    return NextResponse.rewrite(new URL(`/${defaultLocale}${pathname}`, request.url));
+    return NextResponse.rewrite(new URL(`/${defaultLocaleLowercase}${pathname}`, request.url));
   }
 
   // Check if the default locale is in the pathname
