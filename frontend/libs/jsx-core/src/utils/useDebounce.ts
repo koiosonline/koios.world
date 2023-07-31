@@ -1,10 +1,9 @@
 "use client"
-
 import { useEffect, useState } from 'react';
 
 type UseDebounceType<T> = T;
 
-export default function useDebounce<T>(value: UseDebounceType<T>, delay = 800): UseDebounceType<T> {
+export const useDebounce = <T>(value: UseDebounceType<T>, delay = 800): UseDebounceType<T> => {
   const [debouncedValue, setDebouncedValue] = useState<UseDebounceType<T>>(value);
 
   useEffect(() => {
@@ -18,4 +17,4 @@ export default function useDebounce<T>(value: UseDebounceType<T>, delay = 800): 
   }, [value, delay]);
 
   return debouncedValue;
-}
+};

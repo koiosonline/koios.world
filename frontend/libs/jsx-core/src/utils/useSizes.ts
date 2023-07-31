@@ -1,8 +1,8 @@
-"use client"
+'use client';
 
 import { useEffect, useRef, useState } from 'react';
 import { environment } from './environment';
-import useDebounce from './useDebounce';
+import { useDebounce } from './useDebounce';
 
 type SizesResponse = { [key: string]: boolean };
 type SizesCallback<T extends SizesResponse> = (width: number, height: number) => T;
@@ -16,7 +16,7 @@ export const useSizes = <T extends SizesResponse>(sizesCallback: SizesCallback<T
 
   const setWindowSize = () => {
     if (environment.isServer) {
-        return;
+      return;
     }
 
     const newSizes = sizesCallback(window.innerWidth, window.innerHeight);
@@ -43,28 +43,28 @@ export const useSizes = <T extends SizesResponse>(sizesCallback: SizesCallback<T
   return sizes;
 };
 
-export const useBrowserDimensions = (): { width: number, height: number } => {
+export const useBrowserDimensions = (): { width: number; height: number } => {
   const [width, setWidth] = useState(environment.isServer ? 1280 : window.innerWidth);
   const [height, setHeight] = useState(environment.isServer ? 900 : window.innerHeight);
 
   const setWindowSize = () => {
-      if (environment.isServer) {
-          return;
-      }
+    if (environment.isServer) {
+      return;
+    }
 
-      setWidth(window.innerWidth);
-      setHeight(window.innerHeight);
+    setWidth(window.innerWidth);
+    setHeight(window.innerHeight);
   };
 
   const throttledHandleWindowResize: () => void = useDebounce(setWindowSize, 250);
 
   useEffect(() => {
-      window.addEventListener('resize', throttledHandleWindowResize);
-      setWindowSize();
+    window.addEventListener('resize', throttledHandleWindowResize);
+    setWindowSize();
 
-      return function cleanup() {
-          window.removeEventListener('resize', throttledHandleWindowResize);
-      };
+    return function cleanup() {
+      window.removeEventListener('resize', throttledHandleWindowResize);
+    };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return { width, height };
