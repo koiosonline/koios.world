@@ -13,7 +13,8 @@
     "export": "source .env && strapi export --file strapi-export --key $ENCRYPTION_KEY && mv ./strapi-export.tar.gz.enc ./strapi-exports",
     "export:production": "source .env && NODE_ENV=production strapi export --file strapi-export-prod --key $ENCRYPTION_KEY && mv ./strapi-export-prod.tar.gz.enc ./strapi-exports",
     "import": "strapi import --file ./strapi-exports/strapi-export.tar.gz.enc",
-    "import:production": "NODE_ENV=production strapi import --file ./strapi-exports/strapi-export-prod.tar.gz.enc"
+    "import:production": "source .env && NODE_ENV=production strapi import --file ./strapi-exports/strapi-export-prod.tar.gz.enc --key $ENCRYPTION_KEY", 
+    "sync:from-prod": "source .env && strapi transfer --from $STRAPI_PRODUCTION --from-token $TRANSFER_TOKEN --force"
   },
   "dependencies": {
     "@strapi/plugin-graphql": "^4.11.1",

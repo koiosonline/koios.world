@@ -23,7 +23,7 @@ type TranslationsProviderProps = {
 export const TranslationsProvider = (props: TranslationsProviderProps) => {
   const locale = useAppSelector((state) => state.settings.locale);
   const localeCode = useAppSelector((state) => state.settings.localeCode);
-  const activeLanguage = availableLanguages[locale as SupportedLanguages];
+  const activeLanguage = availableLanguages[locale];
   const [activeLanguageCmsPhrases, setActiveLanguageCmsPhrases] = useState<Record<string, string>>({});
 
   const { data, loading, error } = useQuery(GetTranslationsDocument, {

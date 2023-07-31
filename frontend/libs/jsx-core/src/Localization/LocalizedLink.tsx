@@ -9,7 +9,7 @@ type LocalizedLinkProps = {
 
 export const LocalizedLink = (props: LocalizedLinkProps) => {
   const { href, ...rest } = props;
-  const lang = useParams().lang.toLowerCase();
+  const lang = useParams().lang;
   const localizedHref = lang ? `/${lang}${href}` : href;
 
   return (

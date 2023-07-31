@@ -9,7 +9,8 @@
     "build:platform": "nx build platform",
     "===== UTILS =====": "",
     "generate:gql-types": "graphql-codegen --config ./libs/graphql/content/codegen.ts",
-    "generate:translations": "ts-node ./scripts/generate-translations/index.ts"
+    "generate:translations": "npm run sync:strapi && ts-node ./scripts/generate-translations/index.ts",
+    "sync:strapi": "cd ../strapi && npm run sync:from-prod"
   },
   "private": true,
   "dependencies": {
