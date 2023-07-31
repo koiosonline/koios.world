@@ -1,5 +1,5 @@
 type HeroProps = {
-  headline: string;
+  headline: React.ReactNode;
   title: React.ReactNode;
   description?: React.ReactNode;
 };

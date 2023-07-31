@@ -6,7 +6,7 @@ const Page = () => {
   return (
     <>
       <Hero
-        headline={"Courses"}
+        headline={<TranslatedString id="courses.page.name" />}
         title={<TranslatedString id="courses.page.title" />}
         description={<TranslatedString id="courses.page.description" />}
       />
