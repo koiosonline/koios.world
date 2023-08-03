@@ -10,6 +10,7 @@
     /* --color-button-accent: #ffffff; */
     /* --color-button-accent-hover: #ffffff; */
     /* --color-button-muted: #a0aec0; */
+    --color-background-base: 255, 255, 255;
   }
   
   .theme-dark {

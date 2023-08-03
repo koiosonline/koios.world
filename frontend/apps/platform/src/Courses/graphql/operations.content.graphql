@@ -1,9 +1,18 @@
- query GetCourses {
-    courses {
-      data {
-        attributes {
-          Name
+query GetCourses {
+  courses {
+    data {
+      attributes {
+        Name
+        Slug
+        Thumbnail {
+          data {
+            attributes {
+              name
+              formats
+            }
+          }
         }
       }
     }
   }
+}

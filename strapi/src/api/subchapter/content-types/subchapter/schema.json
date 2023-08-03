@@ -32,8 +32,16 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::chapter.chapter",
-      "private": true,
       "inversedBy": "subchapters"
+    },
+    "YouTubeURL": {
+      "type": "string",
+      "required": false
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "Name",
+      "required": true
     }
   }
 }

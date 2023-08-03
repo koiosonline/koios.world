@@ -15,10 +15,12 @@
     "Name": {
       "type": "string",
       "required": true,
-      "unique": true
+      "unique": true,
+      "pluginOptions": {}
     },
     "Description": {
-      "type": "richtext"
+      "type": "richtext",
+      "pluginOptions": {}
     },
     "levels": {
       "type": "relation",
@@ -27,18 +29,27 @@
       "mappedBy": "course"
     },
     "Thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
       ],
-      "type": "media",
-      "multiple": false
+      "pluginOptions": {}
     },
     "Banner": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
       ],
-      "type": "media",
-      "multiple": false
+      "pluginOptions": {}
+    },
+    "Slug": {
+      "type": "uid",
+      "targetField": "Name",
+      "required": true
     }
   }
 }

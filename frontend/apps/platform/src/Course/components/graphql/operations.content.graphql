@@ -1,0 +1,35 @@
+query GetCourse($filters: CourseFiltersInput) {
+  courses(filters: $filters) {
+  data {
+      attributes {
+        Name
+        Slug
+        Description
+        Banner {
+          data {
+            attributes {
+              url
+              name
+            }
+          }
+        }
+        levels {
+          data {
+            attributes {
+              Name
+              slug
+              chapters {
+                data {
+                  attributes {
+                    Name
+                    slug
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
