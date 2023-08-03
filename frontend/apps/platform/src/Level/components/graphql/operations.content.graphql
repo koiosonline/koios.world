@@ -1,0 +1,77 @@
+query GetSubchapter($filters: SubchapterFiltersInput) {
+  subchapters(filters: $filters) {
+    data {
+      attributes {
+        Name
+        YouTubeURL
+        Literature
+        chapter {
+          data {
+            attributes {
+              level {
+                data {
+                  attributes {
+                    chapters {
+                      data {
+                        attributes {
+                          Name
+                          subchapters {
+                            data {
+                              attributes {
+                                Name
+                                slug
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+query GetSubchaptersOfChapter($filters: SubchapterFiltersInput) {
+  subchapters(filters: $filters) {
+    data {
+      attributes {
+        slug
+      }
+    }
+  }
+}
+
+query GetSubchaptersOfLevelAndCourse($filters: CourseFiltersInput, $levelsFilters2: LevelFiltersInput) {
+  courses(filters: $filters) {
+    data {
+      attributes {
+        levels(filters: $levelsFilters2) {
+          data {
+            attributes {
+              chapters {
+                data {
+                  attributes {
+                    slug
+                    subchapters {
+                      data {
+                        attributes {
+                          slug
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

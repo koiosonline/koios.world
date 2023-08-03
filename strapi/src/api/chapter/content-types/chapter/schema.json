@@ -19,7 +19,6 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::level.level",
-      "private": true,
       "inversedBy": "chapters"
     },
     "subchapters": {
@@ -27,6 +26,11 @@
       "relation": "oneToMany",
       "target": "api::subchapter.subchapter",
       "mappedBy": "chapter"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "Name",
+      "required": true
     }
   }
 }
