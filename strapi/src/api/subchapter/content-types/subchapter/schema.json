@@ -4,7 +4,7 @@
   "info": {
     "singularName": "subchapter",
     "pluralName": "subchapters",
-    "displayName": "Subchapter",
+    "displayName": "04 - Subchapter",
     "description": ""
   },
   "options": {
@@ -38,7 +38,7 @@
       "type": "string",
       "required": false
     },
-    "slug": {
+    "Slug": {
       "type": "uid",
       "targetField": "Name",
       "required": true

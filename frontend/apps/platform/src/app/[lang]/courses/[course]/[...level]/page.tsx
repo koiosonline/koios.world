@@ -1,14 +1,14 @@
 'use client';
 
 import { useQuery } from '@apollo/client';
-import { Typography, VideoPlayer } from '@frontend/jsx-core';
+import { VideoPlayer } from '@frontend/jsx-core';
 import {
   GetSubchapterDocument,
   GetSubchaptersOfChapterDocument,
   GetSubchaptersOfLevelAndCourseDocument
 } from 'apps/platform/src/Level/components/graphql/operations.content.generated';
 import { transformToVideoPlayerNavigationList } from 'apps/platform/src/Level/transformers/transformToVideoPlayerNavigationList';
-import { Markdown } from 'apps/platform/src/Markdown/Markdown';
+import { Markdown } from 'apps/platform/src/RichContent/Markdown';
 import { redirect, useParams } from 'next/navigation';
 
 const Page = () => {
@@ -19,7 +19,7 @@ const Page = () => {
   const { loading, error, data } = useQuery(GetSubchapterDocument, {
     variables: {
       filters: {
-        slug: {
+        Slug: {
           eq: video
         }
       }
@@ -36,7 +36,7 @@ const Page = () => {
     variables: {
       filters: {
         chapter: {
-          slug: {
+          Slug: {
             eq: chapter
           }
         }
@@ -58,7 +58,7 @@ const Page = () => {
         }
       },
       levelsFilters2: {
-        slug: {
+        Slug: {
           eq: book
         }
       }
@@ -73,7 +73,7 @@ const Page = () => {
   if (!video) {
     const subchapter = subchaptersData?.subchapters?.data[0].attributes;
     if (subchapter) {
-      redirect(`/${params.lang}/courses/${params.course}/${params.level}/${subchapter.slug}`);
+      redirect(`/${params.lang}/courses/${params.course}/${params.level}/${subchapter.Slug}`);
     }
   }
 
@@ -81,7 +81,7 @@ const Page = () => {
   if (!chapter) {
     const chapter = subchaptersOfLevelData?.courses?.data[0].attributes?.levels?.data[0].attributes?.chapters?.data[0].attributes;
     if (chapter) {
-      redirect(`/${params.lang}/courses/${params.course}/${params.level}/${chapter.slug}/${chapter.subchapters?.data[0].attributes?.slug}`);
+      redirect(`/${params.lang}/courses/${params.course}/${params.level}/${chapter.Slug}/${chapter.subchapters?.data[0].attributes?.Slug}`);
     }
   }
 
@@ -96,16 +96,14 @@ const Page = () => {
     <>
       <VideoPlayer
         YouTubeUrl={content.YouTubeURL}
-        NavigationListSubtitle={'course'}
+        NavigationListSubtitle={'Course'}
         NavigationListTitle={params.course}
         NavigationList={contentList}
       />
 
-      <section className="container max-w-3xl mt-10">
-        <Typography component="h1" variant='h2'>{content.Name}</Typography>
-
+      <section className="container max-w-3xl rich-article pb-10">
         {content.Literature && (
-          <Markdown value={content.Literature} />
+          <Markdown value={content.Literature} openExternalLinksInNewTab />
           /* <TableOfContents value={content.Literature} /> */
         )}
       </section>

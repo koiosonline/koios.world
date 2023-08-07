@@ -29,24 +29,25 @@ module.exports = {
         center: true
       },
       fontFamily: {
-        headings: ['var(--font-righteous)'],
-        base: ['var(--font-inter)'],
+        headings: ['var(--font-inter)'],
+        base: ['var(--font-inter)']
       },
       textColor: {
-        skin: {
-          base: withOpacity('--color-text-base'),
-          muted: withOpacity('--color-text-muted'),
-          inverted: withOpacity('--color-text-inverted')
-        }
+        base: withOpacity('--color-text-base'),
+        muted: withOpacity('--color-text-muted'),
+        inverted: withOpacity('--color-text-inverted'),
+        "neutral-50": withOpacity('--color-text-neutral-50'),
+        "neutral-950": withOpacity('--color-text-neutral-950'),
+        test: "#121212"
       },
       backgroundColor: {
-        skin: {
-          fill: withOpacity('--color-fill'),
-          base: withOpacity('--color-background-base'),
-          'button-accent': withOpacity('--color-button-accent'),
-          'button-accent-hover': withOpacity('--color-button-accent-hover'),
-          'button-muted': withOpacity('--color-button-muted')
-        }
+        fill: withOpacity('--color-fill'),
+        base: withOpacity('--color-background-base'),
+        'contrast-950': withOpacity('--color-background-contrast-950'),
+        'contrast-900': withOpacity('--color-background-contrast-900'),
+        'button-accent': withOpacity('--color-button-accent'),
+        'button-accent-hover': withOpacity('--color-button-accent-hover'),
+        'button-muted': withOpacity('--color-button-muted')
       },
       colors: {
         primary: {
@@ -58,26 +59,6 @@ module.exports = {
           light: '#E6C2CF',
           DEFAULT: '#EF7BA5',
           dark: '#F13E7F'
-        },
-        error: {
-          light: '#e57373',
-          DEFAULT: '#f44336',
-          dark: '#d32f2f'
-        },
-        warning: {
-          light: '#ffb74d',
-          DEFAULT: '#ffa726',
-          dark: '#f57c00'
-        },
-        info: {
-          light: '#4fc3f7',
-          DEFAULT: '#29b6f6',
-          dark: '#0288d1'
-        },
-        success: {
-          light: '#81c784',
-          DEFAULT: '#66bb6a',
-          dark: '#388e3c'
         }
       },
       keyframes: {

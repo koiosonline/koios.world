@@ -5,10 +5,10 @@ export const transformToCourseLevel = (
 ) => {
   return levels.map((level) => ({
     name: level.attributes?.Name || '',
-    slug: level.attributes?.slug || '',
+    slug: level.attributes?.Slug || '',
     chapters: level.attributes?.chapters?.data.map((chapter) => ({
       name: chapter.attributes?.Name || '',
-      slug: chapter.attributes?.slug || '',
+      slug: chapter.attributes?.Slug || '',
     })) || []
   }));
 };

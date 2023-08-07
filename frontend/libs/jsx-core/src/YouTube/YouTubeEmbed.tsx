@@ -6,7 +6,7 @@ export const YouTubeEmbed = (props: YouTubeEmbedProps) => {
   const { embedId } = props;
 
   return (
-    <div className=" overflow-hidden relative h-0 pb-[56.25%]">
+    <div className=" overflow-hidden relative h-0 pb-[56.25%] shrink-0">
       <iframe
         className=" left-0 top-0 h-full w-full absolute"
         width="853"

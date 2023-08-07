@@ -4,7 +4,7 @@
   "info": {
     "singularName": "chapter",
     "pluralName": "chapters",
-    "displayName": "Chapter",
+    "displayName": "03 - Chapter",
     "description": ""
   },
   "options": {
@@ -27,7 +27,7 @@
       "target": "api::subchapter.subchapter",
       "mappedBy": "chapter"
     },
-    "slug": {
+    "Slug": {
       "type": "uid",
       "targetField": "Name",
       "required": true

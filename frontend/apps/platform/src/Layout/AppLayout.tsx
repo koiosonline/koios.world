@@ -22,17 +22,14 @@ const righteous = Righteous({
   variable: '--font-righteous',
 })
 
-
 const koiosDrawerSettingKey = 'KoiosApp.DrawerIsUnfolded';
 
 export const AppLayout = ({ children }: LayoutType) => {
+  const size = useSizes();
+  const isMobile = size.width < parseInt(defaultTheme.screens.lg);
   const storedDrawerSetting = typeof window !== 'undefined' ? localStorage.getItem(koiosDrawerSettingKey) : undefined;
   const drawerSetting = storedDrawerSetting ? JSON.parse(storedDrawerSetting) : true;
   const [isUnfolded, setIsUnfolded] = useState<boolean>(drawerSetting);
-
-  const sizes = useSizes((width) => ({
-    isMobile: width < parseInt(defaultTheme.screens.lg)
-  }));
 
   const toggleDrawer = () => {
     setIsUnfolded(() => !isUnfolded);
@@ -57,11 +54,11 @@ export const AppLayout = ({ children }: LayoutType) => {
 
   return (
     <>
-      <Header isUnfolded={isUnfolded} toggleDrawer={toggleDrawer} isMobile={sizes.isMobile} />
-      <Drawer isUnfolded={isUnfolded} isMobile={sizes.isMobile} />
+      <Header isUnfolded={isUnfolded} toggleDrawer={toggleDrawer} isMobile={isMobile} />
+      <Drawer isUnfolded={isUnfolded} isMobile={isMobile} />
       <main
         className={`${inter.variable} ${righteous.variable} font-base mt-14 h-full flex grow flex-col break-words duration-300 ease-in-out ${
-          isUnfolded && !sizes.isMobile ? 'ml-72  w-[calc(100%-theme(space.72))]' : ''
+          isUnfolded && !isMobile ? 'ml-72  w-[calc(100%-theme(space.72))]' : ''
         }`}
       >
         {children}

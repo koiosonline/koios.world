@@ -48,10 +48,10 @@ export type BooleanFilterInput = {
 export type Chapter = {
   __typename?: 'Chapter';
   Name?: Maybe<Scalars['String']['output']>;
+  Slug: Scalars['String']['output'];
   createdAt?: Maybe<Scalars['DateTime']['output']>;
   level?: Maybe<LevelEntityResponse>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
-  slug: Scalars['String']['output'];
   subchapters?: Maybe<SubchapterRelationResponseCollection>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
 };
@@ -83,6 +83,7 @@ export type ChapterEntityResponseCollection = {
 
 export type ChapterFiltersInput = {
   Name?: InputMaybe<StringFilterInput>;
+  Slug?: InputMaybe<StringFilterInput>;
   and?: InputMaybe<Array<InputMaybe<ChapterFiltersInput>>>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   id?: InputMaybe<IdFilterInput>;
@@ -90,16 +91,15 @@ export type ChapterFiltersInput = {
   not?: InputMaybe<ChapterFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<ChapterFiltersInput>>>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
-  slug?: InputMaybe<StringFilterInput>;
   subchapters?: InputMaybe<SubchapterFiltersInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
 export type ChapterInput = {
   Name?: InputMaybe<Scalars['String']['input']>;
+  Slug?: InputMaybe<Scalars['String']['input']>;
   level?: InputMaybe<Scalars['ID']['input']>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
-  slug?: InputMaybe<Scalars['String']['input']>;
   subchapters?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
 };
 
@@ -410,11 +410,11 @@ export type JsonFilterInput = {
 export type Level = {
   __typename?: 'Level';
   Name: Scalars['String']['output'];
+  Slug: Scalars['String']['output'];
   chapters?: Maybe<ChapterRelationResponseCollection>;
   course?: Maybe<CourseEntityResponse>;
   createdAt?: Maybe<Scalars['DateTime']['output']>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
-  slug: Scalars['String']['output'];
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
 };
 
@@ -445,6 +445,7 @@ export type LevelEntityResponseCollection = {
 
 export type LevelFiltersInput = {
   Name?: InputMaybe<StringFilterInput>;
+  Slug?: InputMaybe<StringFilterInput>;
   and?: InputMaybe<Array<InputMaybe<LevelFiltersInput>>>;
   chapters?: InputMaybe<ChapterFiltersInput>;
   course?: InputMaybe<CourseFiltersInput>;
@@ -453,16 +454,15 @@ export type LevelFiltersInput = {
   not?: InputMaybe<LevelFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<LevelFiltersInput>>>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
-  slug?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
 export type LevelInput = {
   Name?: InputMaybe<Scalars['String']['input']>;
+  Slug?: InputMaybe<Scalars['String']['input']>;
   chapters?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   course?: InputMaybe<Scalars['ID']['input']>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
-  slug?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type LevelRelationResponseCollection = {
@@ -945,11 +945,11 @@ export type Subchapter = {
   Literature?: Maybe<Scalars['String']['output']>;
   Name?: Maybe<Scalars['String']['output']>;
   Quiz?: Maybe<Array<Maybe<ComponentContentQuiz>>>;
+  Slug: Scalars['String']['output'];
   YouTubeURL?: Maybe<Scalars['String']['output']>;
   chapter?: Maybe<ChapterEntityResponse>;
   createdAt?: Maybe<Scalars['DateTime']['output']>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
-  slug: Scalars['String']['output'];
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
 };
 
@@ -989,6 +989,7 @@ export type SubchapterFiltersInput = {
   Literature?: InputMaybe<StringFilterInput>;
   Name?: InputMaybe<StringFilterInput>;
   Quiz?: InputMaybe<ComponentContentQuizFiltersInput>;
+  Slug?: InputMaybe<StringFilterInput>;
   YouTubeURL?: InputMaybe<StringFilterInput>;
   and?: InputMaybe<Array<InputMaybe<SubchapterFiltersInput>>>;
   chapter?: InputMaybe<ChapterFiltersInput>;
@@ -997,7 +998,6 @@ export type SubchapterFiltersInput = {
   not?: InputMaybe<SubchapterFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<SubchapterFiltersInput>>>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
-  slug?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
@@ -1006,10 +1006,10 @@ export type SubchapterInput = {
   Literature?: InputMaybe<Scalars['String']['input']>;
   Name?: InputMaybe<Scalars['String']['input']>;
   Quiz?: InputMaybe<Array<InputMaybe<ComponentContentQuizInput>>>;
+  Slug?: InputMaybe<Scalars['String']['input']>;
   YouTubeURL?: InputMaybe<Scalars['String']['input']>;
   chapter?: InputMaybe<Scalars['ID']['input']>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
-  slug?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type SubchapterRelationResponseCollection = {
@@ -1754,10 +1754,10 @@ export type ResolversParentTypes = ResolversObject<{
 
 export type ChapterResolvers<ContextType = any, ParentType extends ResolversParentTypes['Chapter'] = ResolversParentTypes['Chapter']> = ResolversObject<{
   Name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  Slug?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   createdAt?: Resolver<Maybe<ResolversTypes['DateTime']>, ParentType, ContextType>;
   level?: Resolver<Maybe<ResolversTypes['LevelEntityResponse']>, ParentType, ContextType>;
   publishedAt?: Resolver<Maybe<ResolversTypes['DateTime']>, ParentType, ContextType>;
-  slug?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   subchapters?: Resolver<Maybe<ResolversTypes['SubchapterRelationResponseCollection']>, ParentType, ContextType, RequireFields<ChapterSubchaptersArgs, 'pagination' | 'publicationState' | 'sort'>>;
   updatedAt?: Resolver<Maybe<ResolversTypes['DateTime']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -1880,11 +1880,11 @@ export interface JsonScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes
 
 export type LevelResolvers<ContextType = any, ParentType extends ResolversParentTypes['Level'] = ResolversParentTypes['Level']> = ResolversObject<{
   Name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  Slug?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   chapters?: Resolver<Maybe<ResolversTypes['ChapterRelationResponseCollection']>, ParentType, ContextType, RequireFields<LevelChaptersArgs, 'pagination' | 'publicationState' | 'sort'>>;
   course?: Resolver<Maybe<ResolversTypes['CourseEntityResponse']>, ParentType, ContextType>;
   createdAt?: Resolver<Maybe<ResolversTypes['DateTime']>, ParentType, ContextType>;
   publishedAt?: Resolver<Maybe<ResolversTypes['DateTime']>, ParentType, ContextType>;
-  slug?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   updatedAt?: Resolver<Maybe<ResolversTypes['DateTime']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
@@ -1994,11 +1994,11 @@ export type SubchapterResolvers<ContextType = any, ParentType extends ResolversP
   Literature?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   Name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   Quiz?: Resolver<Maybe<Array<Maybe<ResolversTypes['ComponentContentQuiz']>>>, ParentType, ContextType, RequireFields<SubchapterQuizArgs, 'pagination' | 'sort'>>;
+  Slug?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   YouTubeURL?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   chapter?: Resolver<Maybe<ResolversTypes['ChapterEntityResponse']>, ParentType, ContextType>;
   createdAt?: Resolver<Maybe<ResolversTypes['DateTime']>, ParentType, ContextType>;
   publishedAt?: Resolver<Maybe<ResolversTypes['DateTime']>, ParentType, ContextType>;
-  slug?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   updatedAt?: Resolver<Maybe<ResolversTypes['DateTime']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
