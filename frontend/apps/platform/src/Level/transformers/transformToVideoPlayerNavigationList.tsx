@@ -8,7 +8,7 @@ export const transformToVideoPlayerNavigationList = (
     subchapters:
       subchapter.attributes?.subchapters?.data.map((subchapter) => ({
         name: subchapter.attributes?.Name || '',
-        slug: subchapter.attributes?.slug || ''
+        slug: subchapter.attributes?.Slug || ''
       })) || []
   }));
 };

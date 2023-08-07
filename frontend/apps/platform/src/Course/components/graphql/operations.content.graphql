@@ -17,12 +17,12 @@ query GetCourse($filters: CourseFiltersInput) {
           data {
             attributes {
               Name
-              slug
+              Slug
               chapters {
                 data {
                   attributes {
                     Name
-                    slug
+                    Slug
                   }
                 }
               }

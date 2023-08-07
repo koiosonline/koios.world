@@ -3,6 +3,7 @@ import React, { lazy, Suspense } from 'react';
 export const IconNames = [
   'award',
   'chart-simple',
+  'check-in-circle',
   'close',
   'earth',
   'gear',
@@ -21,6 +22,7 @@ export const IconNames = [
 interface IconProps {
   name: (typeof IconNames)[number];
   className?: string;
+  // onClick?: (event: React.MouseEvent<Element, MouseEvent>) => void;
 }
 
 const IconComponent = ({ name, className }: IconProps) => {
@@ -37,7 +39,7 @@ const IconComponent = ({ name, className }: IconProps) => {
   );
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>Loading...</div>} >
       <Icon />
     </Suspense>
   );

@@ -1,18 +1,46 @@
 /* Colors are defined in RGB value and will be transformed to RGBA by the withOpacity function in tailwind.config.js for opacity support */
+/* Values are based heavily on https://tailwindcss.com/docs/customizing-colors */
 
 @layer base {
   :root,
   .theme-light {
+    /* TEXT COLORS */
     --color-text-base: 100, 116, 139;
+    --color-text-neutral-50: 250, 250, 250;
+    --color-text-neutral-950: 10, 10, 10;
     /* --color-text-muted: #a0aec0; */
     /* --color-text-inverted: #1a202c; */
+
     --color-fill: 249, 250, 251;
-    /* --color-button-accent: #ffffff; */
-    /* --color-button-accent-hover: #ffffff; */
-    /* --color-button-muted: #a0aec0; */
+
+    /* BACKGROUND COLORS */
     --color-background-base: 255, 255, 255;
+    --color-background-contrast-900: 40, 44, 52;
+    --color-background-contrast-950: 28, 31, 36;
+
+    /* BUTTON COLORS */
+    --color-button-accent: #ffffff;
+    --color-button-accent-hover: #ffffff;
+    --color-button-muted: #a0aec0;
+
+    /* BORDER COLORS */
+    /* --color-border-base: #e2e8f0; */
+
+    /* SEMANTIC COLORS */
+    --color-semantic-error-50: rgb(229, 115, 115);
+    --color-semantic-error-100: rgb(244, 67, 54);
+    --color-semantic-error-150: rgb(211, 47, 47);
+    --color-semantic-success-50: rgb(129, 199, 132);
+    --color-semantic-success-100: rgb(102, 187, 106);
+    --color-semantic-success-150: rgb(56, 142, 60);
+    --color-semantic-warning-50: rgb(255, 183, 77);
+    --color-semantic-warning-100: rgb(255, 167, 38);
+    --color-semantic-warning-150: rgb(245, 124, 0);
+    --color-semantic-info-50: rgb(79, 195, 247);
+    --color-semantic-info-100: rgb(41, 182, 246);
+    --color-semantic-info-150: rgb(2, 136, 209);
   }
-  
+
   .theme-dark {
     --color-text-base: 16, 3, 3;
     --color-fill: 224, 1, 1;

@@ -11,7 +11,7 @@ const Page = () => {
         description={<TranslatedString id="courses.page.description" />}
       />
 
-      <div className="container flex max-w-screen-2xl flex-1 flex-col gap-10 lg:flex-row">
+      <div className="container flex max-w-screen-2xl flex-1 flex-col gap-10 lg:flex-row mt-10">
         <CoursesGrid />
       </div>
     </>

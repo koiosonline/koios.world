@@ -4,7 +4,7 @@
   "info": {
     "singularName": "level",
     "pluralName": "levels",
-    "displayName": "Level",
+    "displayName": "02 - Level",
     "description": ""
   },
   "options": {
@@ -28,7 +28,7 @@
       "target": "api::chapter.chapter",
       "mappedBy": "level"
     },
-    "slug": {
+    "Slug": {
       "type": "uid",
       "targetField": "Name",
       "required": true

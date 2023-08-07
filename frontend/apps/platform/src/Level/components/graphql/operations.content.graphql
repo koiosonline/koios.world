@@ -19,7 +19,7 @@ query GetSubchapter($filters: SubchapterFiltersInput) {
                             data {
                               attributes {
                                 Name
-                                slug
+                                Slug
                               }
                             }
                           }
@@ -41,7 +41,7 @@ query GetSubchaptersOfChapter($filters: SubchapterFiltersInput) {
   subchapters(filters: $filters) {
     data {
       attributes {
-        slug
+        Slug
       }
     }
   }
@@ -57,11 +57,11 @@ query GetSubchaptersOfLevelAndCourse($filters: CourseFiltersInput, $levelsFilter
               chapters {
                 data {
                   attributes {
-                    slug
+                    Slug
                     subchapters {
                       data {
                         attributes {
-                          slug
+                          Slug
                         }
                       }
                     }

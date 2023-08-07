@@ -22,7 +22,10 @@ const Page = () => {
   const course = data?.courses?.data[0].attributes;
   const levels = transformToCourseLevel(course?.levels?.data || []);
 
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
   if (!course) return <p>Course not found</p>;
+
 
   return (
     <>
