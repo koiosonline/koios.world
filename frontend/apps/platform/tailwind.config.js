@@ -59,7 +59,20 @@ module.exports = {
           light: '#E6C2CF',
           DEFAULT: '#EF7BA5',
           dark: '#F13E7F'
-        }
+        },
+        "error-50": withOpacity(' --color-semantic-error-50'),
+        "error-100": withOpacity(' --color-semantic-error-100'),
+        "error-150": withOpacity(' --color-semantic-error-150'),
+        "success-50": withOpacity(' --color-semantic-success-50'),
+        "success-100": withOpacity(' --color-semantic-success-100'),
+        "success-150": withOpacity(' --color-semantic-success-150'),
+        "warning-50": withOpacity(' --color-semantic-warning-50'),
+        "warning-100": withOpacity(' --color-semantic-warning-100'),
+        "warning-150": withOpacity(' --color-semantic-warning-150'),
+        "info-50": withOpacity(' --color-semantic-info-50'),
+        "info-100": withOpacity(' --color-semantic-info-100'),
+        "info-150": withOpacity(' --color-semantic-info-150'),
+
       },
       keyframes: {
         slideDown: {

@@ -1,7 +1,7 @@
 "use client"
 
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
+import { useParams, usePathname } from 'next/navigation';
 import { DrawerLink } from './DrawerLink';
 import {
   DrawerNavigationItemType,
@@ -17,9 +17,9 @@ type DrawerType = {
 export const Drawer = (props: DrawerType) => {
   const { isUnfolded, isMobile } = props;
   const pathname = usePathname();
+  const params = useParams();
 
-  const isActive = (href: string) => pathname === href;
-  // const handleSearch = async (searchTerm: string) => router.push(searchTerm);
+  const isActive = (href: string) => pathname === `/${params.lang}${href}`;
 
   return (
     <nav
@@ -37,14 +37,6 @@ export const Drawer = (props: DrawerType) => {
           />
         </LocalizedLink>
       )}
-
-      {/* {isMobile && (
-        <SearchBar
-          onSearch={handleSearch}
-          placeholder="Search on public key..."
-          className="mx-4 py-2"
-        />
-      )} */}
 
       <div className="container overflow-y-auto">
         {Object.keys(drawerNavigation).map((category) => (

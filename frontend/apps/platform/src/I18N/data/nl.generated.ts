@@ -3,7 +3,6 @@
 import { en } from './en.generated';
 
 export const nl: Partial<typeof en> = {
-    "courses.page.title": "Cursussen",
     "courses.page.name": "Cursussen"
 };
           
