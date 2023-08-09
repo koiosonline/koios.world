@@ -4,6 +4,8 @@ export const IconNames = [
   'award',
   'chart-simple',
   'check-in-circle',
+  'chevron-up',
+  'chevron-up-filled',
   'close',
   'earth',
   'gear',

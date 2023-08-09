@@ -2,7 +2,12 @@
         
 export const en = {
     "courses.page.description": "Discover new worlds and expand your knowledge about different topics or continue where you left off",
-    "courses.page.title": "Courses",
-    "courses.page.name": "Courses"
+    "courses.page.title": "Enriching Education for All",
+    "courses.page.name": "Courses",
+    "error.default.title": "Something went wrong",
+    "error.default.description": "An unexpected error has occurred while attempting to perform the requested action. You may try refreshing the page or attempting the action again later.",
+    "course.page.error.not-found.title": "This course doesn't exist",
+    "course.page.error.not-found.description": "The course you're looking for doesn't exist. Please go back to [courses](/courses) to find another one.",
+    "courses.page.overview.label": "Overview"
 };
         

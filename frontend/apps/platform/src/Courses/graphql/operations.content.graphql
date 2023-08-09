@@ -9,6 +9,7 @@ query GetCourses {
             attributes {
               name
               formats
+              alternativeText
             }
           }
         }
