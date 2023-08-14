@@ -36,7 +36,7 @@ export const CourseLevelAccordion = (props: CourseLevelAccordionProps) => {
   };
 
   return (
-    <Accordion className="mt-10">
+    <Accordion id="levels" className="mt-10 pb-10 container max-w-5xl">
       {levels.map((level, i) => {
          const { triggerBgColor, contentBgColor } = getBackgroundColors(i);
          const formattedIndex = (i + 1).toString();

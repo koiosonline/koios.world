@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_content_contacts",
+  "info": {
+    "displayName": "_Contact"
+  },
+  "options": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "Company": {
+      "type": "string"
+    },
+    "Position": {
+      "type": "string"
+    },
+    "Email": {
+      "type": "string"
+    },
+    "ProfilePicture": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

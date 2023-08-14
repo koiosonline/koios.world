@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_generic_strings",
+  "info": {
+    "displayName": "_String"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    }
+  }
+}

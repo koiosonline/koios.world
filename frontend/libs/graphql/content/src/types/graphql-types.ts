@@ -132,6 +132,35 @@ export type ComponentContentCallToActionInput = {
   id?: InputMaybe<Scalars['ID']['input']>;
 };
 
+export type ComponentContentContact = {
+  __typename?: 'ComponentContentContact';
+  Company?: Maybe<Scalars['String']['output']>;
+  Email?: Maybe<Scalars['String']['output']>;
+  Name: Scalars['String']['output'];
+  Position?: Maybe<Scalars['String']['output']>;
+  ProfilePicture?: Maybe<UploadFileEntityResponse>;
+  id: Scalars['ID']['output'];
+};
+
+export type ComponentContentContactFiltersInput = {
+  Company?: InputMaybe<StringFilterInput>;
+  Email?: InputMaybe<StringFilterInput>;
+  Name?: InputMaybe<StringFilterInput>;
+  Position?: InputMaybe<StringFilterInput>;
+  and?: InputMaybe<Array<InputMaybe<ComponentContentContactFiltersInput>>>;
+  not?: InputMaybe<ComponentContentContactFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentContentContactFiltersInput>>>;
+};
+
+export type ComponentContentContactInput = {
+  Company?: InputMaybe<Scalars['String']['input']>;
+  Email?: InputMaybe<Scalars['String']['input']>;
+  Name?: InputMaybe<Scalars['String']['input']>;
+  Position?: InputMaybe<Scalars['String']['input']>;
+  ProfilePicture?: InputMaybe<Scalars['ID']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
 export type ComponentContentQuiz = {
   __typename?: 'ComponentContentQuiz';
   Answers: Array<Maybe<ComponentContentQuizAnswer>>;
@@ -181,17 +210,180 @@ export type ComponentContentQuizInput = {
   id?: InputMaybe<Scalars['ID']['input']>;
 };
 
+export type ComponentContentShortLink = {
+  __typename?: 'ComponentContentShortLink';
+  Icon?: Maybe<ComponentGenericIcon>;
+  Label: Scalars['String']['output'];
+  NewWindow?: Maybe<Scalars['Boolean']['output']>;
+  URL: Scalars['String']['output'];
+  id: Scalars['ID']['output'];
+};
+
+export type ComponentContentShortLinkFiltersInput = {
+  Icon?: InputMaybe<ComponentGenericIconFiltersInput>;
+  Label?: InputMaybe<StringFilterInput>;
+  NewWindow?: InputMaybe<BooleanFilterInput>;
+  URL?: InputMaybe<StringFilterInput>;
+  and?: InputMaybe<Array<InputMaybe<ComponentContentShortLinkFiltersInput>>>;
+  not?: InputMaybe<ComponentContentShortLinkFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentContentShortLinkFiltersInput>>>;
+};
+
+export type ComponentContentShortLinkInput = {
+  Icon?: InputMaybe<ComponentGenericIconInput>;
+  Label?: InputMaybe<Scalars['String']['input']>;
+  NewWindow?: InputMaybe<Scalars['Boolean']['input']>;
+  URL?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type ComponentContentUsp = {
+  __typename?: 'ComponentContentUsp';
+  Icon?: Maybe<ComponentGenericIcon>;
+  Title: Scalars['String']['output'];
+  id: Scalars['ID']['output'];
+};
+
+export type ComponentContentUspFiltersInput = {
+  Icon?: InputMaybe<ComponentGenericIconFiltersInput>;
+  Title?: InputMaybe<StringFilterInput>;
+  and?: InputMaybe<Array<InputMaybe<ComponentContentUspFiltersInput>>>;
+  not?: InputMaybe<ComponentContentUspFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentContentUspFiltersInput>>>;
+};
+
+export type ComponentContentUspInput = {
+  Icon?: InputMaybe<ComponentGenericIconInput>;
+  Title?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type ComponentGenericIcon = {
+  __typename?: 'ComponentGenericIcon';
+  Icon?: Maybe<Enum_Componentgenericicon_Icon>;
+  id: Scalars['ID']['output'];
+};
+
+export type ComponentGenericIconFiltersInput = {
+  Icon?: InputMaybe<StringFilterInput>;
+  and?: InputMaybe<Array<InputMaybe<ComponentGenericIconFiltersInput>>>;
+  not?: InputMaybe<ComponentGenericIconFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentGenericIconFiltersInput>>>;
+};
+
+export type ComponentGenericIconInput = {
+  Icon?: InputMaybe<Enum_Componentgenericicon_Icon>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type ComponentGenericString = {
+  __typename?: 'ComponentGenericString';
+  Title?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+};
+
+export type ComponentGenericStringFiltersInput = {
+  Title?: InputMaybe<StringFilterInput>;
+  and?: InputMaybe<Array<InputMaybe<ComponentGenericStringFiltersInput>>>;
+  not?: InputMaybe<ComponentGenericStringFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentGenericStringFiltersInput>>>;
+};
+
+export type ComponentGenericStringInput = {
+  Title?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type Contact = {
+  __typename?: 'Contact';
+  ContactDetails?: Maybe<ComponentContentContact>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+export type ContactEntity = {
+  __typename?: 'ContactEntity';
+  attributes?: Maybe<Contact>;
+  id?: Maybe<Scalars['ID']['output']>;
+};
+
+export type ContactEntityResponse = {
+  __typename?: 'ContactEntityResponse';
+  data?: Maybe<ContactEntity>;
+};
+
+export type ContactEntityResponseCollection = {
+  __typename?: 'ContactEntityResponseCollection';
+  data: Array<ContactEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type ContactFiltersInput = {
+  ContactDetails?: InputMaybe<ComponentContentContactFiltersInput>;
+  and?: InputMaybe<Array<InputMaybe<ContactFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  not?: InputMaybe<ContactFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ContactFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type ContactInput = {
+  ContactDetails?: InputMaybe<ComponentContentContactInput>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type ContactRelationResponseCollection = {
+  __typename?: 'ContactRelationResponseCollection';
+  data: Array<ContactEntity>;
+};
+
 export type Course = {
   __typename?: 'Course';
   Banner?: Maybe<UploadFileEntityResponse>;
   Description?: Maybe<Scalars['String']['output']>;
+  Instructors?: Maybe<ContactRelationResponseCollection>;
+  Learnings?: Maybe<Array<Maybe<ComponentGenericString>>>;
   Name: Scalars['String']['output'];
+  QuickLinks?: Maybe<Array<Maybe<ComponentContentShortLink>>>;
   Slug: Scalars['String']['output'];
   Thumbnail?: Maybe<UploadFileEntityResponse>;
+  USPs?: Maybe<Array<Maybe<ComponentContentUsp>>>;
   createdAt?: Maybe<Scalars['DateTime']['output']>;
   levels?: Maybe<LevelRelationResponseCollection>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+
+export type CourseInstructorsArgs = {
+  filters?: InputMaybe<ContactFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type CourseLearningsArgs = {
+  filters?: InputMaybe<ComponentGenericStringFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type CourseQuickLinksArgs = {
+  filters?: InputMaybe<ComponentContentShortLinkFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type CourseUsPsArgs = {
+  filters?: InputMaybe<ComponentContentUspFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
@@ -221,8 +413,12 @@ export type CourseEntityResponseCollection = {
 
 export type CourseFiltersInput = {
   Description?: InputMaybe<StringFilterInput>;
+  Instructors?: InputMaybe<ContactFiltersInput>;
+  Learnings?: InputMaybe<ComponentGenericStringFiltersInput>;
   Name?: InputMaybe<StringFilterInput>;
+  QuickLinks?: InputMaybe<ComponentContentShortLinkFiltersInput>;
   Slug?: InputMaybe<StringFilterInput>;
+  USPs?: InputMaybe<ComponentContentUspFiltersInput>;
   and?: InputMaybe<Array<InputMaybe<CourseFiltersInput>>>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   id?: InputMaybe<IdFilterInput>;
@@ -236,9 +432,13 @@ export type CourseFiltersInput = {
 export type CourseInput = {
   Banner?: InputMaybe<Scalars['ID']['input']>;
   Description?: InputMaybe<Scalars['String']['input']>;
+  Instructors?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  Learnings?: InputMaybe<Array<InputMaybe<ComponentGenericStringInput>>>;
   Name?: InputMaybe<Scalars['String']['input']>;
+  QuickLinks?: InputMaybe<Array<InputMaybe<ComponentContentShortLinkInput>>>;
   Slug?: InputMaybe<Scalars['String']['input']>;
   Thumbnail?: InputMaybe<Scalars['ID']['input']>;
+  USPs?: InputMaybe<Array<InputMaybe<ComponentContentUspInput>>>;
   levels?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
@@ -266,6 +466,31 @@ export type DateTimeFilterInput = {
   or?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
   startsWith?: InputMaybe<Scalars['DateTime']['input']>;
 };
+
+export enum Enum_Componentgenericicon_Icon {
+  Award = 'award',
+  Calendar = 'calendar',
+  ChartSimple = 'chart_simple',
+  CheckInCircle = 'check_in_circle',
+  ChevronUp = 'chevron_up',
+  ChevronUpFilled = 'chevron_up_filled',
+  Clipboard = 'clipboard',
+  Close = 'close',
+  Earth = 'earth',
+  File = 'file',
+  FilePowerpoint = 'file_powerpoint',
+  Gear = 'gear',
+  Hamburger = 'hamburger',
+  LayerGroup = 'layer_group',
+  MagnifyingGlass = 'magnifying_glass',
+  MenuFold = 'menu_fold',
+  MenuUnfold = 'menu_unfold',
+  Moon = 'moon',
+  Sun = 'sun',
+  Trophy = 'trophy',
+  User = 'user',
+  Users = 'users'
+}
 
 export type FileInfoInput = {
   alternativeText?: InputMaybe<Scalars['String']['input']>;
@@ -297,7 +522,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']['input']>;
 };
 
-export type GenericMorph = Chapter | ComponentContentCallToAction | ComponentContentQuiz | ComponentContentQuizAnswer | Course | I18NLocale | Level | Subchapter | Translation | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = Chapter | ComponentContentCallToAction | ComponentContentContact | ComponentContentQuiz | ComponentContentQuizAnswer | ComponentContentShortLink | ComponentContentUsp | ComponentGenericIcon | ComponentGenericString | Contact | Course | I18NLocale | Level | Subchapter | Translation | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -475,6 +700,7 @@ export type Mutation = {
   /** Change user password. Confirm with the current password. */
   changePassword?: Maybe<UsersPermissionsLoginPayload>;
   createChapter?: Maybe<ChapterEntityResponse>;
+  createContact?: Maybe<ContactEntityResponse>;
   createCourse?: Maybe<CourseEntityResponse>;
   createLevel?: Maybe<LevelEntityResponse>;
   createSubchapter?: Maybe<SubchapterEntityResponse>;
@@ -487,6 +713,7 @@ export type Mutation = {
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
   deleteChapter?: Maybe<ChapterEntityResponse>;
+  deleteContact?: Maybe<ContactEntityResponse>;
   deleteCourse?: Maybe<CourseEntityResponse>;
   deleteLevel?: Maybe<LevelEntityResponse>;
   deleteSubchapter?: Maybe<SubchapterEntityResponse>;
@@ -509,6 +736,7 @@ export type Mutation = {
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
   updateChapter?: Maybe<ChapterEntityResponse>;
+  updateContact?: Maybe<ContactEntityResponse>;
   updateCourse?: Maybe<CourseEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
   updateLevel?: Maybe<LevelEntityResponse>;
@@ -533,6 +761,11 @@ export type MutationChangePasswordArgs = {
 
 export type MutationCreateChapterArgs = {
   data: ChapterInput;
+};
+
+
+export type MutationCreateContactArgs = {
+  data: ContactInput;
 };
 
 
@@ -585,6 +818,11 @@ export type MutationCreateUsersPermissionsUserArgs = {
 
 
 export type MutationDeleteChapterArgs = {
+  id: Scalars['ID']['input'];
+};
+
+
+export type MutationDeleteContactArgs = {
   id: Scalars['ID']['input'];
 };
 
@@ -676,6 +914,12 @@ export type MutationUpdateChapterArgs = {
 };
 
 
+export type MutationUpdateContactArgs = {
+  data: ContactInput;
+  id: Scalars['ID']['input'];
+};
+
+
 export type MutationUpdateCourseArgs = {
   data: CourseInput;
   id: Scalars['ID']['input'];
@@ -763,6 +1007,8 @@ export type Query = {
   __typename?: 'Query';
   chapter?: Maybe<ChapterEntityResponse>;
   chapters?: Maybe<ChapterEntityResponseCollection>;
+  contact?: Maybe<ContactEntityResponse>;
+  contacts?: Maybe<ContactEntityResponseCollection>;
   course?: Maybe<CourseEntityResponse>;
   courses?: Maybe<CourseEntityResponseCollection>;
   i18NLocale?: Maybe<I18NLocaleEntityResponse>;
@@ -792,6 +1038,19 @@ export type QueryChapterArgs = {
 
 export type QueryChaptersArgs = {
   filters?: InputMaybe<ChapterFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type QueryContactArgs = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+
+export type QueryContactsArgs = {
+  filters?: InputMaybe<ContactFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -1517,7 +1776,7 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 
 /** Mapping of union types */
 export type ResolversUnionTypes<RefType extends Record<string, unknown>> = ResolversObject<{
-  GenericMorph: ( Chapter ) | ( ComponentContentCallToAction ) | ( ComponentContentQuiz ) | ( ComponentContentQuizAnswer ) | ( Course ) | ( I18NLocale ) | ( Level ) | ( Subchapter ) | ( Translation ) | ( Omit<UploadFile, 'related'> & { related?: Maybe<Array<Maybe<RefType['GenericMorph']>>> } ) | ( UploadFolder ) | ( UsersPermissionsPermission ) | ( UsersPermissionsRole ) | ( UsersPermissionsUser );
+  GenericMorph: ( Chapter ) | ( ComponentContentCallToAction ) | ( ComponentContentContact ) | ( ComponentContentQuiz ) | ( ComponentContentQuizAnswer ) | ( ComponentContentShortLink ) | ( ComponentContentUsp ) | ( ComponentGenericIcon ) | ( ComponentGenericString ) | ( Contact ) | ( Course ) | ( I18NLocale ) | ( Level ) | ( Subchapter ) | ( Translation ) | ( Omit<UploadFile, 'related'> & { related?: Maybe<Array<Maybe<RefType['GenericMorph']>>> } ) | ( UploadFolder ) | ( UsersPermissionsPermission ) | ( UsersPermissionsRole ) | ( UsersPermissionsUser );
 }>;
 
 
@@ -1535,12 +1794,34 @@ export type ResolversTypes = ResolversObject<{
   ComponentContentCallToAction: ResolverTypeWrapper<ComponentContentCallToAction>;
   ComponentContentCallToActionFiltersInput: ComponentContentCallToActionFiltersInput;
   ComponentContentCallToActionInput: ComponentContentCallToActionInput;
+  ComponentContentContact: ResolverTypeWrapper<ComponentContentContact>;
+  ComponentContentContactFiltersInput: ComponentContentContactFiltersInput;
+  ComponentContentContactInput: ComponentContentContactInput;
   ComponentContentQuiz: ResolverTypeWrapper<ComponentContentQuiz>;
   ComponentContentQuizAnswer: ResolverTypeWrapper<ComponentContentQuizAnswer>;
   ComponentContentQuizAnswerFiltersInput: ComponentContentQuizAnswerFiltersInput;
   ComponentContentQuizAnswerInput: ComponentContentQuizAnswerInput;
   ComponentContentQuizFiltersInput: ComponentContentQuizFiltersInput;
   ComponentContentQuizInput: ComponentContentQuizInput;
+  ComponentContentShortLink: ResolverTypeWrapper<ComponentContentShortLink>;
+  ComponentContentShortLinkFiltersInput: ComponentContentShortLinkFiltersInput;
+  ComponentContentShortLinkInput: ComponentContentShortLinkInput;
+  ComponentContentUsp: ResolverTypeWrapper<ComponentContentUsp>;
+  ComponentContentUspFiltersInput: ComponentContentUspFiltersInput;
+  ComponentContentUspInput: ComponentContentUspInput;
+  ComponentGenericIcon: ResolverTypeWrapper<ComponentGenericIcon>;
+  ComponentGenericIconFiltersInput: ComponentGenericIconFiltersInput;
+  ComponentGenericIconInput: ComponentGenericIconInput;
+  ComponentGenericString: ResolverTypeWrapper<ComponentGenericString>;
+  ComponentGenericStringFiltersInput: ComponentGenericStringFiltersInput;
+  ComponentGenericStringInput: ComponentGenericStringInput;
+  Contact: ResolverTypeWrapper<Contact>;
+  ContactEntity: ResolverTypeWrapper<ContactEntity>;
+  ContactEntityResponse: ResolverTypeWrapper<ContactEntityResponse>;
+  ContactEntityResponseCollection: ResolverTypeWrapper<ContactEntityResponseCollection>;
+  ContactFiltersInput: ContactFiltersInput;
+  ContactInput: ContactInput;
+  ContactRelationResponseCollection: ResolverTypeWrapper<ContactRelationResponseCollection>;
   Course: ResolverTypeWrapper<Course>;
   CourseEntity: ResolverTypeWrapper<CourseEntity>;
   CourseEntityResponse: ResolverTypeWrapper<CourseEntityResponse>;
@@ -1549,6 +1830,7 @@ export type ResolversTypes = ResolversObject<{
   CourseInput: CourseInput;
   DateTime: ResolverTypeWrapper<Scalars['DateTime']['output']>;
   DateTimeFilterInput: DateTimeFilterInput;
+  ENUM_COMPONENTGENERICICON_ICON: Enum_Componentgenericicon_Icon;
   FileInfoInput: FileInfoInput;
   Float: ResolverTypeWrapper<Scalars['Float']['output']>;
   FloatFilterInput: FloatFilterInput;
@@ -1651,12 +1933,34 @@ export type ResolversParentTypes = ResolversObject<{
   ComponentContentCallToAction: ComponentContentCallToAction;
   ComponentContentCallToActionFiltersInput: ComponentContentCallToActionFiltersInput;
   ComponentContentCallToActionInput: ComponentContentCallToActionInput;
+  ComponentContentContact: ComponentContentContact;
+  ComponentContentContactFiltersInput: ComponentContentContactFiltersInput;
+  ComponentContentContactInput: ComponentContentContactInput;
   ComponentContentQuiz: ComponentContentQuiz;
   ComponentContentQuizAnswer: ComponentContentQuizAnswer;
   ComponentContentQuizAnswerFiltersInput: ComponentContentQuizAnswerFiltersInput;
   ComponentContentQuizAnswerInput: ComponentContentQuizAnswerInput;
   ComponentContentQuizFiltersInput: ComponentContentQuizFiltersInput;
   ComponentContentQuizInput: ComponentContentQuizInput;
+  ComponentContentShortLink: ComponentContentShortLink;
+  ComponentContentShortLinkFiltersInput: ComponentContentShortLinkFiltersInput;
+  ComponentContentShortLinkInput: ComponentContentShortLinkInput;
+  ComponentContentUsp: ComponentContentUsp;
+  ComponentContentUspFiltersInput: ComponentContentUspFiltersInput;
+  ComponentContentUspInput: ComponentContentUspInput;
+  ComponentGenericIcon: ComponentGenericIcon;
+  ComponentGenericIconFiltersInput: ComponentGenericIconFiltersInput;
+  ComponentGenericIconInput: ComponentGenericIconInput;
+  ComponentGenericString: ComponentGenericString;
+  ComponentGenericStringFiltersInput: ComponentGenericStringFiltersInput;
+  ComponentGenericStringInput: ComponentGenericStringInput;
+  Contact: Contact;
+  ContactEntity: ContactEntity;
+  ContactEntityResponse: ContactEntityResponse;
+  ContactEntityResponseCollection: ContactEntityResponseCollection;
+  ContactFiltersInput: ContactFiltersInput;
+  ContactInput: ContactInput;
+  ContactRelationResponseCollection: ContactRelationResponseCollection;
   Course: Course;
   CourseEntity: CourseEntity;
   CourseEntityResponse: CourseEntityResponse;
@@ -1793,6 +2097,16 @@ export type ComponentContentCallToActionResolvers<ContextType = any, ParentType 
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
+export type ComponentContentContactResolvers<ContextType = any, ParentType extends ResolversParentTypes['ComponentContentContact'] = ResolversParentTypes['ComponentContentContact']> = ResolversObject<{
+  Company?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  Email?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  Name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  Position?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  ProfilePicture?: Resolver<Maybe<ResolversTypes['UploadFileEntityResponse']>, ParentType, ContextType>;
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
 export type ComponentContentQuizResolvers<ContextType = any, ParentType extends ResolversParentTypes['ComponentContentQuiz'] = ResolversParentTypes['ComponentContentQuiz']> = ResolversObject<{
   Answers?: Resolver<Array<Maybe<ResolversTypes['ComponentContentQuizAnswer']>>, ParentType, ContextType, RequireFields<ComponentContentQuizAnswersArgs, 'pagination' | 'sort'>>;
   Question?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
@@ -1807,12 +2121,74 @@ export type ComponentContentQuizAnswerResolvers<ContextType = any, ParentType ex
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
+export type ComponentContentShortLinkResolvers<ContextType = any, ParentType extends ResolversParentTypes['ComponentContentShortLink'] = ResolversParentTypes['ComponentContentShortLink']> = ResolversObject<{
+  Icon?: Resolver<Maybe<ResolversTypes['ComponentGenericIcon']>, ParentType, ContextType>;
+  Label?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  NewWindow?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
+  URL?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type ComponentContentUspResolvers<ContextType = any, ParentType extends ResolversParentTypes['ComponentContentUsp'] = ResolversParentTypes['ComponentContentUsp']> = ResolversObject<{
+  Icon?: Resolver<Maybe<ResolversTypes['ComponentGenericIcon']>, ParentType, ContextType>;
+  Title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type ComponentGenericIconResolvers<ContextType = any, ParentType extends ResolversParentTypes['ComponentGenericIcon'] = ResolversParentTypes['ComponentGenericIcon']> = ResolversObject<{
+  Icon?: Resolver<Maybe<ResolversTypes['ENUM_COMPONENTGENERICICON_ICON']>, ParentType, ContextType>;
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type ComponentGenericStringResolvers<ContextType = any, ParentType extends ResolversParentTypes['ComponentGenericString'] = ResolversParentTypes['ComponentGenericString']> = ResolversObject<{
+  Title?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type ContactResolvers<ContextType = any, ParentType extends ResolversParentTypes['Contact'] = ResolversParentTypes['Contact']> = ResolversObject<{
+  ContactDetails?: Resolver<Maybe<ResolversTypes['ComponentContentContact']>, ParentType, ContextType>;
+  createdAt?: Resolver<Maybe<ResolversTypes['DateTime']>, ParentType, ContextType>;
+  publishedAt?: Resolver<Maybe<ResolversTypes['DateTime']>, ParentType, ContextType>;
+  updatedAt?: Resolver<Maybe<ResolversTypes['DateTime']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type ContactEntityResolvers<ContextType = any, ParentType extends ResolversParentTypes['ContactEntity'] = ResolversParentTypes['ContactEntity']> = ResolversObject<{
+  attributes?: Resolver<Maybe<ResolversTypes['Contact']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['ID']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type ContactEntityResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['ContactEntityResponse'] = ResolversParentTypes['ContactEntityResponse']> = ResolversObject<{
+  data?: Resolver<Maybe<ResolversTypes['ContactEntity']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type ContactEntityResponseCollectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['ContactEntityResponseCollection'] = ResolversParentTypes['ContactEntityResponseCollection']> = ResolversObject<{
+  data?: Resolver<Array<ResolversTypes['ContactEntity']>, ParentType, ContextType>;
+  meta?: Resolver<ResolversTypes['ResponseCollectionMeta'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type ContactRelationResponseCollectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['ContactRelationResponseCollection'] = ResolversParentTypes['ContactRelationResponseCollection']> = ResolversObject<{
+  data?: Resolver<Array<ResolversTypes['ContactEntity']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
 export type CourseResolvers<ContextType = any, ParentType extends ResolversParentTypes['Course'] = ResolversParentTypes['Course']> = ResolversObject<{
   Banner?: Resolver<Maybe<ResolversTypes['UploadFileEntityResponse']>, ParentType, ContextType>;
   Description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  Instructors?: Resolver<Maybe<ResolversTypes['ContactRelationResponseCollection']>, ParentType, ContextType, RequireFields<CourseInstructorsArgs, 'pagination' | 'publicationState' | 'sort'>>;
+  Learnings?: Resolver<Maybe<Array<Maybe<ResolversTypes['ComponentGenericString']>>>, ParentType, ContextType, RequireFields<CourseLearningsArgs, 'pagination' | 'sort'>>;
   Name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  QuickLinks?: Resolver<Maybe<Array<Maybe<ResolversTypes['ComponentContentShortLink']>>>, ParentType, ContextType, RequireFields<CourseQuickLinksArgs, 'pagination' | 'sort'>>;
   Slug?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   Thumbnail?: Resolver<Maybe<ResolversTypes['UploadFileEntityResponse']>, ParentType, ContextType>;
+  USPs?: Resolver<Maybe<Array<Maybe<ResolversTypes['ComponentContentUsp']>>>, ParentType, ContextType, RequireFields<CourseUsPsArgs, 'pagination' | 'sort'>>;
   createdAt?: Resolver<Maybe<ResolversTypes['DateTime']>, ParentType, ContextType>;
   levels?: Resolver<Maybe<ResolversTypes['LevelRelationResponseCollection']>, ParentType, ContextType, RequireFields<CourseLevelsArgs, 'pagination' | 'publicationState' | 'sort'>>;
   publishedAt?: Resolver<Maybe<ResolversTypes['DateTime']>, ParentType, ContextType>;
@@ -1842,7 +2218,7 @@ export interface DateTimeScalarConfig extends GraphQLScalarTypeConfig<ResolversT
 }
 
 export type GenericMorphResolvers<ContextType = any, ParentType extends ResolversParentTypes['GenericMorph'] = ResolversParentTypes['GenericMorph']> = ResolversObject<{
-  __resolveType: TypeResolveFn<'Chapter' | 'ComponentContentCallToAction' | 'ComponentContentQuiz' | 'ComponentContentQuizAnswer' | 'Course' | 'I18NLocale' | 'Level' | 'Subchapter' | 'Translation' | 'UploadFile' | 'UploadFolder' | 'UsersPermissionsPermission' | 'UsersPermissionsRole' | 'UsersPermissionsUser', ParentType, ContextType>;
+  __resolveType: TypeResolveFn<'Chapter' | 'ComponentContentCallToAction' | 'ComponentContentContact' | 'ComponentContentQuiz' | 'ComponentContentQuizAnswer' | 'ComponentContentShortLink' | 'ComponentContentUsp' | 'ComponentGenericIcon' | 'ComponentGenericString' | 'Contact' | 'Course' | 'I18NLocale' | 'Level' | 'Subchapter' | 'Translation' | 'UploadFile' | 'UploadFolder' | 'UsersPermissionsPermission' | 'UsersPermissionsRole' | 'UsersPermissionsUser', ParentType, ContextType>;
 }>;
 
 export type I18NLocaleResolvers<ContextType = any, ParentType extends ResolversParentTypes['I18NLocale'] = ResolversParentTypes['I18NLocale']> = ResolversObject<{
@@ -1914,6 +2290,7 @@ export type LevelRelationResponseCollectionResolvers<ContextType = any, ParentTy
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = ResolversObject<{
   changePassword?: Resolver<Maybe<ResolversTypes['UsersPermissionsLoginPayload']>, ParentType, ContextType, RequireFields<MutationChangePasswordArgs, 'currentPassword' | 'password' | 'passwordConfirmation'>>;
   createChapter?: Resolver<Maybe<ResolversTypes['ChapterEntityResponse']>, ParentType, ContextType, RequireFields<MutationCreateChapterArgs, 'data'>>;
+  createContact?: Resolver<Maybe<ResolversTypes['ContactEntityResponse']>, ParentType, ContextType, RequireFields<MutationCreateContactArgs, 'data'>>;
   createCourse?: Resolver<Maybe<ResolversTypes['CourseEntityResponse']>, ParentType, ContextType, RequireFields<MutationCreateCourseArgs, 'data'>>;
   createLevel?: Resolver<Maybe<ResolversTypes['LevelEntityResponse']>, ParentType, ContextType, RequireFields<MutationCreateLevelArgs, 'data'>>;
   createSubchapter?: Resolver<Maybe<ResolversTypes['SubchapterEntityResponse']>, ParentType, ContextType, RequireFields<MutationCreateSubchapterArgs, 'data'>>;
@@ -1924,6 +2301,7 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
   createUsersPermissionsRole?: Resolver<Maybe<ResolversTypes['UsersPermissionsCreateRolePayload']>, ParentType, ContextType, RequireFields<MutationCreateUsersPermissionsRoleArgs, 'data'>>;
   createUsersPermissionsUser?: Resolver<ResolversTypes['UsersPermissionsUserEntityResponse'], ParentType, ContextType, RequireFields<MutationCreateUsersPermissionsUserArgs, 'data'>>;
   deleteChapter?: Resolver<Maybe<ResolversTypes['ChapterEntityResponse']>, ParentType, ContextType, RequireFields<MutationDeleteChapterArgs, 'id'>>;
+  deleteContact?: Resolver<Maybe<ResolversTypes['ContactEntityResponse']>, ParentType, ContextType, RequireFields<MutationDeleteContactArgs, 'id'>>;
   deleteCourse?: Resolver<Maybe<ResolversTypes['CourseEntityResponse']>, ParentType, ContextType, RequireFields<MutationDeleteCourseArgs, 'id'>>;
   deleteLevel?: Resolver<Maybe<ResolversTypes['LevelEntityResponse']>, ParentType, ContextType, RequireFields<MutationDeleteLevelArgs, 'id'>>;
   deleteSubchapter?: Resolver<Maybe<ResolversTypes['SubchapterEntityResponse']>, ParentType, ContextType, RequireFields<MutationDeleteSubchapterArgs, 'id'>>;
@@ -1940,6 +2318,7 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
   removeFile?: Resolver<Maybe<ResolversTypes['UploadFileEntityResponse']>, ParentType, ContextType, RequireFields<MutationRemoveFileArgs, 'id'>>;
   resetPassword?: Resolver<Maybe<ResolversTypes['UsersPermissionsLoginPayload']>, ParentType, ContextType, RequireFields<MutationResetPasswordArgs, 'code' | 'password' | 'passwordConfirmation'>>;
   updateChapter?: Resolver<Maybe<ResolversTypes['ChapterEntityResponse']>, ParentType, ContextType, RequireFields<MutationUpdateChapterArgs, 'data' | 'id'>>;
+  updateContact?: Resolver<Maybe<ResolversTypes['ContactEntityResponse']>, ParentType, ContextType, RequireFields<MutationUpdateContactArgs, 'data' | 'id'>>;
   updateCourse?: Resolver<Maybe<ResolversTypes['CourseEntityResponse']>, ParentType, ContextType, RequireFields<MutationUpdateCourseArgs, 'data' | 'id'>>;
   updateFileInfo?: Resolver<ResolversTypes['UploadFileEntityResponse'], ParentType, ContextType, RequireFields<MutationUpdateFileInfoArgs, 'id'>>;
   updateLevel?: Resolver<Maybe<ResolversTypes['LevelEntityResponse']>, ParentType, ContextType, RequireFields<MutationUpdateLevelArgs, 'data' | 'id'>>;
@@ -1963,6 +2342,8 @@ export type PaginationResolvers<ContextType = any, ParentType extends ResolversP
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
   chapter?: Resolver<Maybe<ResolversTypes['ChapterEntityResponse']>, ParentType, ContextType, Partial<QueryChapterArgs>>;
   chapters?: Resolver<Maybe<ResolversTypes['ChapterEntityResponseCollection']>, ParentType, ContextType, RequireFields<QueryChaptersArgs, 'pagination' | 'publicationState' | 'sort'>>;
+  contact?: Resolver<Maybe<ResolversTypes['ContactEntityResponse']>, ParentType, ContextType, Partial<QueryContactArgs>>;
+  contacts?: Resolver<Maybe<ResolversTypes['ContactEntityResponseCollection']>, ParentType, ContextType, RequireFields<QueryContactsArgs, 'pagination' | 'publicationState' | 'sort'>>;
   course?: Resolver<Maybe<ResolversTypes['CourseEntityResponse']>, ParentType, ContextType, Partial<QueryCourseArgs>>;
   courses?: Resolver<Maybe<ResolversTypes['CourseEntityResponseCollection']>, ParentType, ContextType, RequireFields<QueryCoursesArgs, 'pagination' | 'publicationState' | 'sort'>>;
   i18NLocale?: Resolver<Maybe<ResolversTypes['I18NLocaleEntityResponse']>, ParentType, ContextType, Partial<QueryI18NLocaleArgs>>;
@@ -2270,8 +2651,18 @@ export type Resolvers<ContextType = any> = ResolversObject<{
   ChapterEntityResponseCollection?: ChapterEntityResponseCollectionResolvers<ContextType>;
   ChapterRelationResponseCollection?: ChapterRelationResponseCollectionResolvers<ContextType>;
   ComponentContentCallToAction?: ComponentContentCallToActionResolvers<ContextType>;
+  ComponentContentContact?: ComponentContentContactResolvers<ContextType>;
   ComponentContentQuiz?: ComponentContentQuizResolvers<ContextType>;
   ComponentContentQuizAnswer?: ComponentContentQuizAnswerResolvers<ContextType>;
+  ComponentContentShortLink?: ComponentContentShortLinkResolvers<ContextType>;
+  ComponentContentUsp?: ComponentContentUspResolvers<ContextType>;
+  ComponentGenericIcon?: ComponentGenericIconResolvers<ContextType>;
+  ComponentGenericString?: ComponentGenericStringResolvers<ContextType>;
+  Contact?: ContactResolvers<ContextType>;
+  ContactEntity?: ContactEntityResolvers<ContextType>;
+  ContactEntityResponse?: ContactEntityResponseResolvers<ContextType>;
+  ContactEntityResponseCollection?: ContactEntityResponseCollectionResolvers<ContextType>;
+  ContactRelationResponseCollection?: ContactRelationResponseCollectionResolvers<ContextType>;
   Course?: CourseResolvers<ContextType>;
   CourseEntity?: CourseEntityResolvers<ContextType>;
   CourseEntityResponse?: CourseEntityResponseResolvers<ContextType>;

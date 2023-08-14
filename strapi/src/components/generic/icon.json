@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_generic_icons",
+  "info": {
+    "displayName": "_Icon",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Icon": {
+      "type": "enumeration",
+      "enum": [
+        "award",
+        "calendar",
+        "chart-simple",
+        "check-in-circle",
+        "chevron-up",
+        "chevron-up-filled",
+        "clipboard",
+        "close",
+        "earth",
+        "file-powerpoint",
+        "file",
+        "gear",
+        "hamburger",
+        "layer-group",
+        "magnifying-glass",
+        "menu-fold",
+        "menu-unfold",
+        "moon",
+        "sun",
+        "trophy",
+        "user",
+        "users"
+      ],
+      "default": "check-in-circle"
+    }
+  }
+}

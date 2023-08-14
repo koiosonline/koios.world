@@ -1,4 +1,4 @@
-import { GetCourseQuery } from '../components/graphql/operations.content.generated';
+import { GetCourseQuery } from '../graphql/operations.content.generated';
 
 export const transformToCourseLevel = (
   levels: NonNullable<NonNullable<NonNullable<GetCourseQuery['courses']>['data'][0]['attributes']>['levels']>['data']

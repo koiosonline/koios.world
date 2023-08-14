@@ -2,7 +2,7 @@
 
 import { useParams, useRouter } from 'next/navigation';
 import { Typography } from '../Typography/Typography';
-import { Icon } from '../utils/Icon/Icon';
+import { Icon } from '../Icon/Icon';
 import { store } from '../utils/useStorage';
 import { useState } from 'react';
 

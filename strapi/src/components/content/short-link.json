@@ -1,7 +1,8 @@
 {
-  "collectionName": "components_content_call_to_actions",
+  "collectionName": "components_course_short_links",
   "info": {
-    "displayName": "_CallToAction",
+    "displayName": "_CallToActionWithIcon",
+    "icon": "",
     "description": ""
   },
   "options": {},
@@ -16,8 +17,12 @@
     },
     "NewWindow": {
       "type": "boolean",
-      "default": true,
-      "required": false
+      "default": true
+    },
+    "Icon": {
+      "type": "component",
+      "repeatable": false,
+      "component": "generic.icon"
     }
   }
 }
