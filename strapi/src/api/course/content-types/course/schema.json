@@ -50,6 +50,26 @@
       "type": "uid",
       "targetField": "Name",
       "required": true
+    },
+    "Learnings": {
+      "type": "component",
+      "repeatable": true,
+      "component": "generic.string"
+    },
+    "Instructors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::contact.contact"
+    },
+    "QuickLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.short-link"
+    },
+    "USPs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.usp"
     }
   }
 }

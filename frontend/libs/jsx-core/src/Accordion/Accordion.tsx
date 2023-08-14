@@ -2,9 +2,10 @@
 
 import * as RadixAccordion from '@radix-ui/react-accordion';
 import React from 'react';
-import { Icon } from '../utils/Icon/Icon';
+import { Icon } from '../Icon/Icon';
 
 type AccordionProps = {
+  id?: string;
   children: React.ReactNode;
   className?: string;
 };
@@ -25,10 +26,10 @@ type AccordionContentProps = {
 };
 
 export const Accordion = (props: AccordionProps) => {
-  const { children, className } = props;
+  const { id, children, className } = props;
 
   return (
-    <RadixAccordion.Root className={`rounded-md w-full ${className}`} type={'multiple'} defaultValue={['BOOK 1']}>
+    <RadixAccordion.Root id={id} className={`rounded-md w-full ${className}`} type={'multiple'} defaultValue={['BOOK 1']}>
       {children}
     </RadixAccordion.Root>
   );

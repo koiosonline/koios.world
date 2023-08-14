@@ -2,15 +2,16 @@
 
 import { useQuery } from '@apollo/client';
 import { LoaderBox, Typography } from '@frontend/jsx-core';
-import { CourseLevelAccordion } from 'apps/platform/src/Course/components/CourseLevelAccordion';
-import { GetCourseDocument } from 'apps/platform/src/Course/components/graphql/operations.content.generated';
+import { CourseLevelAccordion } from 'apps/platform/src/Course/CourseLevels/components/CourseLevelAccordion';
+import { GetCourseDocument } from 'apps/platform/src/Course/graphql/operations.content.generated';
 import { transformToCourseLevel } from 'apps/platform/src/Course/transformers/transformToCourseLevels';
 import { ErrorBox } from 'apps/platform/src/shared/Error/ErrorBox';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import { TranslatedString } from 'apps/platform/src/I18N/components/TranslatedString';
-import { BorderedBlock } from 'apps/platform/src/Course/components/BorderedBlock';
-import { Markdown } from 'apps/platform/src/RichContent/Markdown';
+import { CourseOverviewPanel } from 'apps/platform/src/Course/CourseOverviewPanel/CourseOverviewPanel';
+import { CourseLearningsPanel } from 'apps/platform/src/Course/CourseLearningsPanel/CourseLearningsPanel';
+import { CourseDetailPanel } from 'apps/platform/src/Course/CourseDetailPanel/CourseDetailPanel';
 
 const Page = () => {
   const params = useParams();
@@ -51,23 +52,22 @@ const Page = () => {
         />
       </div>
 
-      <div className="container max-w-4xl mt-10 pb-10">
+      <section className="container max-w-5xl mt-10">
         <Typography component="h1" variant="h3">
           {course.Name}
         </Typography>
+      </section>
 
-        {course.Description && (
-          <BorderedBlock className="mt-4">
-            <Typography component="h2" variant="h4">
-              <TranslatedString id="courses.page.overview.label" />
-            </Typography>
+      <section className="container max-w-5xl flex xl:gap-10 flex-col-reverse xl:flex-row mt-4">
+        <div className="w-full xl:w-2/3">
+          <CourseOverviewPanel description={course.Description} />
+          <CourseLearningsPanel learnings={course.Learnings} />
+        </div>
 
-            <div className="rich-article"><Markdown value={course.Description} openExternalLinksInNewTab /></div>
-          </BorderedBlock>
-        )}
+        <CourseDetailPanel usps={course.USPs} quickLinks={course.QuickLinks} instructors={course.Instructors?.data} />
+      </section>
 
-        {levels && <CourseLevelAccordion levels={levels} />}
-      </div>
+      {levels && <CourseLevelAccordion levels={levels} />}
     </>
   );
 };

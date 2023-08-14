@@ -2,12 +2,17 @@ import React, { lazy, Suspense } from 'react';
 
 export const IconNames = [
   'award',
+  'calendar',
   'chart-simple',
   'check-in-circle',
+  'check',
   'chevron-up',
   'chevron-up-filled',
+  'clipboard',
   'close',
   'earth',
+  'file-powerpoint',
+  'file',
   'gear',
   'hamburger',
   'layer-group',
@@ -24,7 +29,6 @@ export const IconNames = [
 interface IconProps {
   name: (typeof IconNames)[number];
   className?: string;
-  // onClick?: (event: React.MouseEvent<Element, MouseEvent>) => void;
 }
 
 const IconComponent = ({ name, className }: IconProps) => {

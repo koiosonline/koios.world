@@ -4,12 +4,12 @@
   "license": "MIT",
   "scripts": {
     "start:platform": "nx serve platform",
-    "start:graphql-sandbox": "node scripts/graphql-sandbox/sandbox.js",
+    "start:gql-sandbox": "node scripts/graphql-sandbox/sandbox.js",
     "===== BUILD =====": "",
     "build:platform": "nx build platform",
     "===== UTILS =====": "",
     "generate:gql-types": "graphql-codegen --config ./libs/graphql/content/codegen.ts",
-    "generate:translations": "npm run sync:strapi && ts-node ./scripts/generate-translations/index.ts",
+    "generate:translations": "ts-node ./scripts/generate-translations/index.ts",
     "sync:strapi": "cd ../strapi && npm run sync:from-prod"
   },
   "private": true,

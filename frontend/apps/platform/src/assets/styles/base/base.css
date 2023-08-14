@@ -4,8 +4,9 @@
   }
 
   html {
-    @apply h-full;
+    @apply h-full scroll-smooth;
   }
+  
 
   body {
     @apply flex flex-col min-h-full h-full bg-fill text-base;

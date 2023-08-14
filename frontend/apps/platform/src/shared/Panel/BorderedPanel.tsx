@@ -1,8 +1,8 @@
-type BorderedBlockProps = {
+type BorderedPanelProps = {
     className?: string;
     children: React.ReactNode;
 }
-export const BorderedBlock = (props: BorderedBlockProps) => {
+export const BorderedPanel = (props: BorderedPanelProps) => {
     const { className, children } = props;
     return (
         <div className={`border-2 border-contrast-900 rounded-lg p-4 ${className}`}>

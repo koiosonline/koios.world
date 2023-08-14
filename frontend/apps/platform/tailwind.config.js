@@ -45,9 +45,8 @@ module.exports = {
         base: withOpacity('--color-background-base'),
         'contrast-950': withOpacity('--color-background-contrast-950'),
         'contrast-900': withOpacity('--color-background-contrast-900'),
-        'button-accent': withOpacity('--color-button-accent'),
-        'button-accent-hover': withOpacity('--color-button-accent-hover'),
-        'button-muted': withOpacity('--color-button-muted')
+        'button-primary': withOpacity('--color-button-primary'),
+        'button-primary-hover': withOpacity('--color-button-primary-hover'),
       },
       colors: {
         primary: {
@@ -60,6 +59,8 @@ module.exports = {
           DEFAULT: '#EF7BA5',
           dark: '#F13E7F'
         },
+        "neutral-50": withOpacity(' --color-neutral-50'),
+        "neutral-950": withOpacity(' --color-neutral-950'),
         "error-50": withOpacity(' --color-semantic-error-50'),
         "error-100": withOpacity(' --color-semantic-error-100'),
         "error-150": withOpacity(' --color-semantic-error-150'),

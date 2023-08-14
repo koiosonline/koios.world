@@ -19,11 +19,11 @@
     --color-background-contrast-950: 28, 31, 36;
 
     /* BUTTON COLORS */
-    --color-button-accent: #ffffff;
-    --color-button-accent-hover: #ffffff;
+    --color-button-primary: 219, 39, 119;
+    --color-button-primary-hover: 190, 24, 93;
     --color-button-muted: #a0aec0;
 
-    /* BORDER COLORS */
+    /* BORDER & DIVIDER COLORS */
     /* --color-border-base: #e2e8f0; */
 
     /* SEMANTIC COLORS */
@@ -39,6 +39,10 @@
     --color-semantic-info-50: 79, 195, 247;
     --color-semantic-info-100: 41, 182, 246;
     --color-semantic-info-150: 2, 136, 209;
+
+    /* NEUTRAL COLORS */
+    --color-neutral-50: #fafafa;
+    --color-neutral-950: #0a0a0a;
   }
 
   .theme-dark {
