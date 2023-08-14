@@ -19,13 +19,13 @@ export const CourseDetailPanel = (props: CourseDetailPanelProps) => {
 
   return (
     <BorderedPanel className="mt-4 w-full xl:w-1/3 h-fit">
-      <Button variant="contained" href={`${pathname}#levels`} className="w-full mb-4">
+      <Button variant="contained" href={`${pathname}#levels`} className="w-full">
         <TranslatedString id="course.page.cta.start-course.label" />
       </Button>
 
-      {usps && <CourseUSPs usps={usps} />}
-      {quickLinks && <CourseQuickLinks quickLinks={quickLinks} />}
-      {instructors && <CourseInstructors instructors={instructors} />}
+      <CourseUSPs usps={usps} />
+      <CourseQuickLinks quickLinks={quickLinks} />
+      <CourseInstructors instructors={instructors} />
     </BorderedPanel>
   );
 };

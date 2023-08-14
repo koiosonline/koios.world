@@ -10,9 +10,7 @@ type CourseInstructorsProps = {
 export const CourseInstructors = (props: CourseInstructorsProps) => {
   const { instructors } = props;
 
-  if (!instructors) {
-    return null;
-  }
+  if (!instructors || instructors.length <= 0) return null;
 
   return (
     <>
@@ -26,19 +24,21 @@ export const CourseInstructors = (props: CourseInstructorsProps) => {
         {instructors.map((item, i) => {
           const instructor = item.attributes?.ContactDetails;
           return (
-            <li key={i} className="flex items-center gap-3">   
-                <Image
-                  src={instructor?.ProfilePicture?.data?.attributes?.formats.small.url}
-                  alt={instructor?.ProfilePicture?.data?.attributes?.alternativeText || ''}
-                  width={0}
-                  height={0}
-                  sizes="100vw"
-                  className="w-14 h-14 p-0.5 rounded-full object-cover overflow-hidden"
-                />
+            <li key={i} className="flex items-center gap-3">
+              <Image
+                src={instructor?.ProfilePicture?.data?.attributes?.formats.small.url}
+                alt={instructor?.ProfilePicture?.data?.attributes?.alternativeText || ''}
+                width={0}
+                height={0}
+                sizes="100vw"
+                className="w-14 h-14 p-0.5 rounded-full object-cover overflow-hidden"
+              />
 
               <div>
-                <Typography className='font-semibold'>{instructor?.Name}</Typography>
-                <Typography className='text-sm'>{instructor?.Position}, {instructor?.Company}</Typography>
+                <Typography className="font-semibold">{instructor?.Name}</Typography>
+                <Typography className="text-sm">
+                  {instructor?.Position}, {instructor?.Company}
+                </Typography>
               </div>
             </li>
           );

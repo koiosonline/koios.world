@@ -9,9 +9,7 @@ type CourseQuickLinksProps = {
 export const CourseQuickLinks = (props: CourseQuickLinksProps) => {
   const { quickLinks } = props;
 
-  if (!quickLinks) {
-    return null;
-  }
+  if (!quickLinks || quickLinks.length <= 0) return null;
 
   return (
     <>
