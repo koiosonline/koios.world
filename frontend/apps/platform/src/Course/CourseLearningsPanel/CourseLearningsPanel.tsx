@@ -10,7 +10,7 @@ type CourseLearningsPanelProps = {
 export const CourseLearningsPanel = (props: CourseLearningsPanelProps) => {
   const { learnings } = props;
 
-  if (!learnings) return null;
+  if (!learnings || learnings.length <= 0) return null;
 
   return (
     <BorderedPanel className="mt-4">

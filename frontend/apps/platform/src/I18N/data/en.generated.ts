@@ -13,6 +13,7 @@ export const en = {
     "course.page.lecturers.title": "About the lecturers",
     "course.page.quick-links.title": "Additional information",
     "course.page.usps.title": "This course includes",
-    "course.page.cta.start-course.label": "Start learning"
+    "course.page.cta.start-course.label": "Start learning",
+    "subchapter.page.further-readings.title": "Further readings"
 };
         

@@ -23,6 +23,11 @@
     --color-button-primary-hover: 190, 24, 93;
     --color-button-muted: #a0aec0;
 
+       /* LINK COLORS */
+    --color-link-primary: 219, 39, 119;
+    --color-link-primary-hover: 190, 24, 93;
+    --color-link-primary-active: 217, 141, 172;
+
     /* BORDER & DIVIDER COLORS */
     /* --color-border-base: #e2e8f0; */
 

@@ -9,9 +9,7 @@ type CourseUSPsProps = {
 export const CourseUSPs = (props: CourseUSPsProps) => {
   const { usps } = props;
 
-  if (!usps) {
-    return null;
-  }
+  if (!usps || usps.length <= 0) return null;
 
   return (
     <>

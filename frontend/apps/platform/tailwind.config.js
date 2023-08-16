@@ -38,7 +38,9 @@ module.exports = {
         inverted: withOpacity('--color-text-inverted'),
         "neutral-50": withOpacity('--color-text-neutral-50'),
         "neutral-950": withOpacity('--color-text-neutral-950'),
-        test: "#121212"
+        "link-primary": withOpacity('--color-link-primary'),
+        "link-primary-hover": withOpacity('--color-link-primary-hover'),
+        "link-primary-active": withOpacity('--color-link-primary-active'),
       },
       backgroundColor: {
         fill: withOpacity('--color-fill'),

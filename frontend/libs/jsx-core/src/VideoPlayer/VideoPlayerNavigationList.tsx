@@ -13,6 +13,7 @@ type NavigationItemSubchapters = {
 
 export type NavigationItem = {
   chapter: string;
+  chapterSlug: string;
   subchapters: NavigationItemSubchapters[];
 };
 
@@ -31,12 +32,12 @@ export const VideoPlayerNavigationList = (props: VideoPlayerNavigationListProps)
   const [level, chapter, subchapter] = params.level.split('/');
   const [videoCheck, setVideoCheck] = useState<boolean>(false); // used to force rerender of component after (un)checking video
 
-  const handleLinkClick = (subchapterSlug: string) => {
+  const handleLinkClick = (newSubchapterSlug: string, newChapter: string) => {
     const currentSubchapterSlug = `/${level}/${chapter}/${subchapter}`;
-    const clickedSubchapterSlug = `/${level}/${chapter}/${subchapterSlug}`;
+    const clickedSubchapterSlug = `/${level}/${chapter}/${newSubchapterSlug}`;
 
     if (currentSubchapterSlug !== clickedSubchapterSlug) {
-      router.push(`/courses/${course}/${level}/${chapter}/${subchapterSlug}`);
+      router.push(`/courses/${course}/${level}/${newChapter}/${newSubchapterSlug}`);
     }
   };
 
@@ -86,7 +87,7 @@ export const VideoPlayerNavigationList = (props: VideoPlayerNavigationListProps)
               <ul>
                 {item.subchapters.map((subchapter) => (
                   <li
-                    onClick={() => handleLinkClick(subchapter.slug)}
+                    onClick={() => handleLinkClick(subchapter.slug, item.chapterSlug)}
                     key={subchapter.name}
                     className={`bg-contrast-950 px-4 py-4 cursor-pointer flex items-center hover:bg-contrast-950/50 transition-all duration-200 ease-in-out 
                     ${store.getJson(subchapter.slug) ? 'opacity-50' : ''} 
