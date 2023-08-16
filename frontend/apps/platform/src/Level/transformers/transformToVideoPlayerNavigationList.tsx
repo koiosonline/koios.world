@@ -5,6 +5,7 @@ export const transformToVideoPlayerNavigationList = (
 ) => {
   return chapters?.attributes?.level?.data?.attributes?.chapters?.data.map((subchapter) => ({
     chapter: subchapter.attributes?.Name || '',
+    chapterSlug: subchapter.attributes?.Slug || '',
     subchapters:
       subchapter.attributes?.subchapters?.data.map((subchapter) => ({
         name: subchapter.attributes?.Name || '',
