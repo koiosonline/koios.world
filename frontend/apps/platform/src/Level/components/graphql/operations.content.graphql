@@ -5,6 +5,11 @@ query GetSubchapter($filters: SubchapterFiltersInput) {
         Name
         YouTubeURL
         Literature
+        FurtherReadings {
+          Label
+          NewWindow
+          URL
+        }
         chapter {
           data {
             attributes {

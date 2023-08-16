@@ -2,6 +2,7 @@
 
 import { useQuery } from '@apollo/client';
 import { VideoPlayer } from '@frontend/jsx-core';
+import { FurtherReadings } from 'apps/platform/src/Level/components/FurtherReadings';
 import {
   GetSubchapterDocument,
   GetSubchaptersOfChapterDocument,
@@ -101,11 +102,15 @@ const Page = () => {
         NavigationList={contentList}
       />
 
-      <section className="container max-w-3xl rich-article pb-10">
+      <section className="container max-w-3xl rich-article mb-8">
         {content.Literature && (
           <Markdown value={content.Literature} openExternalLinksInNewTab />
           /* <TableOfContents value={content.Literature} /> */
         )}
+      </section>
+
+      <section className="container max-w-3xl pb-20">
+          <FurtherReadings items={content.FurtherReadings} />
       </section>
     </>
   );

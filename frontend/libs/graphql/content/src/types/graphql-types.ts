@@ -298,7 +298,6 @@ export type Contact = {
   __typename?: 'Contact';
   ContactDetails?: Maybe<ComponentContentContact>;
   createdAt?: Maybe<Scalars['DateTime']['output']>;
-  publishedAt?: Maybe<Scalars['DateTime']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
 };
 
@@ -326,13 +325,11 @@ export type ContactFiltersInput = {
   id?: InputMaybe<IdFilterInput>;
   not?: InputMaybe<ContactFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<ContactFiltersInput>>>;
-  publishedAt?: InputMaybe<DateTimeFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
 export type ContactInput = {
   ContactDetails?: InputMaybe<ComponentContentContactInput>;
-  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
 export type ContactRelationResponseCollection = {
@@ -361,7 +358,6 @@ export type Course = {
 export type CourseInstructorsArgs = {
   filters?: InputMaybe<ContactFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
@@ -1052,7 +1048,6 @@ export type QueryContactArgs = {
 export type QueryContactsArgs = {
   filters?: InputMaybe<ContactFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
@@ -2152,7 +2147,6 @@ export type ComponentGenericStringResolvers<ContextType = any, ParentType extend
 export type ContactResolvers<ContextType = any, ParentType extends ResolversParentTypes['Contact'] = ResolversParentTypes['Contact']> = ResolversObject<{
   ContactDetails?: Resolver<Maybe<ResolversTypes['ComponentContentContact']>, ParentType, ContextType>;
   createdAt?: Resolver<Maybe<ResolversTypes['DateTime']>, ParentType, ContextType>;
-  publishedAt?: Resolver<Maybe<ResolversTypes['DateTime']>, ParentType, ContextType>;
   updatedAt?: Resolver<Maybe<ResolversTypes['DateTime']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
@@ -2182,7 +2176,7 @@ export type ContactRelationResponseCollectionResolvers<ContextType = any, Parent
 export type CourseResolvers<ContextType = any, ParentType extends ResolversParentTypes['Course'] = ResolversParentTypes['Course']> = ResolversObject<{
   Banner?: Resolver<Maybe<ResolversTypes['UploadFileEntityResponse']>, ParentType, ContextType>;
   Description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  Instructors?: Resolver<Maybe<ResolversTypes['ContactRelationResponseCollection']>, ParentType, ContextType, RequireFields<CourseInstructorsArgs, 'pagination' | 'publicationState' | 'sort'>>;
+  Instructors?: Resolver<Maybe<ResolversTypes['ContactRelationResponseCollection']>, ParentType, ContextType, RequireFields<CourseInstructorsArgs, 'pagination' | 'sort'>>;
   Learnings?: Resolver<Maybe<Array<Maybe<ResolversTypes['ComponentGenericString']>>>, ParentType, ContextType, RequireFields<CourseLearningsArgs, 'pagination' | 'sort'>>;
   Name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   QuickLinks?: Resolver<Maybe<Array<Maybe<ResolversTypes['ComponentContentShortLink']>>>, ParentType, ContextType, RequireFields<CourseQuickLinksArgs, 'pagination' | 'sort'>>;
@@ -2343,7 +2337,7 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
   chapter?: Resolver<Maybe<ResolversTypes['ChapterEntityResponse']>, ParentType, ContextType, Partial<QueryChapterArgs>>;
   chapters?: Resolver<Maybe<ResolversTypes['ChapterEntityResponseCollection']>, ParentType, ContextType, RequireFields<QueryChaptersArgs, 'pagination' | 'publicationState' | 'sort'>>;
   contact?: Resolver<Maybe<ResolversTypes['ContactEntityResponse']>, ParentType, ContextType, Partial<QueryContactArgs>>;
-  contacts?: Resolver<Maybe<ResolversTypes['ContactEntityResponseCollection']>, ParentType, ContextType, RequireFields<QueryContactsArgs, 'pagination' | 'publicationState' | 'sort'>>;
+  contacts?: Resolver<Maybe<ResolversTypes['ContactEntityResponseCollection']>, ParentType, ContextType, RequireFields<QueryContactsArgs, 'pagination' | 'sort'>>;
   course?: Resolver<Maybe<ResolversTypes['CourseEntityResponse']>, ParentType, ContextType, Partial<QueryCourseArgs>>;
   courses?: Resolver<Maybe<ResolversTypes['CourseEntityResponseCollection']>, ParentType, ContextType, RequireFields<QueryCoursesArgs, 'pagination' | 'publicationState' | 'sort'>>;
   i18NLocale?: Resolver<Maybe<ResolversTypes['I18NLocaleEntityResponse']>, ParentType, ContextType, Partial<QueryI18NLocaleArgs>>;

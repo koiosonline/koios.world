@@ -12,6 +12,6 @@ export const getButtonVariant = (variant: ButtonProps['variant'] = defaultVarian
     case 'outlined':
       return '';
     case 'text':
-      return 'p-0 hover: active:';
+      return 'p-0 text-link-primary hover:text-link-primary-hover active:text-link-primary-active';
   }
 };
