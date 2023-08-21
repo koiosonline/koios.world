@@ -1,15 +1,13 @@
 /* Colors are defined in RGB value and will be transformed to RGBA by the withOpacity function in tailwind.config.js for opacity support */
 /* Values are based heavily on https://tailwindcss.com/docs/customizing-colors */
+/* Most values are defined again, but this time in RGB format, to support multiple themes */
 
 @layer base {
   :root,
   .theme-light {
-    /* TEXT COLORS */
-    --color-text-base: 13, 12, 34;
-    --color-text-neutral-50: 250, 250, 250;
-    --color-text-neutral-950: 10, 10, 10;
-    /* --color-text-muted: #a0aec0; */
-    /* --color-text-inverted: #1a202c; */
+    /* THEME COLORS */
+    --color-primary-950: 13, 12, 34;
+    --color-secondary-600: 219, 39, 119;
 
     --color-fill: 249, 250, 251;
 
@@ -46,8 +44,9 @@
     --color-semantic-info-150: 2, 136, 209;
 
     /* NEUTRAL COLORS */
-    --color-neutral-50: #fafafa;
-    --color-neutral-950: #0a0a0a;
+    --color-neutral-50: 250, 250, 250;
+    --color-neutral-400: 163, 163, 163;
+    --color-neutral-950: 10, 10, 10;
   }
 
   .theme-dark {

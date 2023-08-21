@@ -1,7 +1,9 @@
 import React, { lazy, Suspense } from 'react';
 
+// A list of all the icons that are available in alphabetical order.
 export const IconNames = [
   'award',
+  'book-atlas',
   'calendar',
   'chart-simple',
   'check-in-circle',
@@ -9,12 +11,15 @@ export const IconNames = [
   'chevron-up',
   'chevron-up-filled',
   'clipboard',
-  'close',
+  'clock',
+  'clone',
+  'discord',
   'earth',
   'file-powerpoint',
   'file',
   'gear',
   'hamburger',
+  'id-badge',
   'layer-group',
   'magnifying-glass',
   'menu-fold',

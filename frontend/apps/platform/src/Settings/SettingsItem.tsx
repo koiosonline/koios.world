@@ -24,7 +24,7 @@ export const SettingsItem = (props: SettingsItemType) => {
   return (
     <div className={`flex items-center justify-between gap-10 py-6 ${showBorder ? 'border-t' : ''} border-slate-200 py-2`}>
       <div>
-        <h1 className="h6 mb-2 text-primary-dark">{title}</h1>
+        <h1 className="h6 mb-2 text-primary-950">{title}</h1>
         <p className="text-sm">{description}</p>
       </div>
 

@@ -9,7 +9,7 @@ type HeroProps = {
 export const Hero = (props: HeroProps) => {
   const { headline, title, description } = props;
   return (
-    <section className="bg-violet-400/10 text-primary-dark">
+    <section className="bg-violet-400/10 text-primary-950">
       <div className="container max-w-screen-2xl text-center flex flex-col md:flex-row px-10 py-20 gap-10 md:text-left">
         <div className="md:w-2/5 flex justify-center items-center">
           <Typography component="h1" variant="h2">
@@ -21,7 +21,7 @@ export const Hero = (props: HeroProps) => {
           <Typography component="h2" variant="h5">
             {title}
           </Typography>
-          {description && <Typography className='text-primary-dark/70 mt-2'>{description}</Typography>}
+          {description && <Typography className='text-primary-950/70 mt-2'>{description}</Typography>}
         </div>
       </div>
     </section>

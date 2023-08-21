@@ -20,7 +20,7 @@ export const Button = (props: ButtonProps) => {
         href={href}
         className={`${buttonVariant} ${className}`}
         target={openExternalLinksInNewTab ? '_blank' : undefined}
-        rel={openExternalLinksInNewTab ? 'noopener noreferrer' : ''}
+        rel={openExternalLinksInNewTab ? 'noopener noreferrer' : undefined}
       >
         {children}
       </Link>

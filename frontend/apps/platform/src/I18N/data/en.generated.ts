@@ -1,6 +1,7 @@
 // Generated! Source translations can be found in Strapi
         
 export const en = {
+    "subchapter.page.further-readings.title": "Further readings",
     "courses.page.description": "Discover new worlds and expand your knowledge about different topics or continue where you left off",
     "courses.page.title": "Enriching Education for All",
     "courses.page.name": "Courses",
@@ -14,6 +15,7 @@ export const en = {
     "course.page.quick-links.title": "Additional information",
     "course.page.usps.title": "This course includes",
     "course.page.cta.start-course.label": "Start learning",
-    "subchapter.page.further-readings.title": "Further readings"
+    "subchapter.page.error.not-found.title": "The subchapter you're looking for doesn't exist",
+    "subchapter.page.error.not-found.description": "The subchapter you're looking for doesn't exist. Please go back to [courses](/courses) to find another one."
 };
         
