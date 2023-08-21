@@ -88,7 +88,6 @@ const Page = () => {
 
   // If no chapter, redirect to first video in first chapter of level
   if (!chapter) {
-    console.log('triggered chapter redirect')
     const firstChapter = subchaptersOfLevelData?.courses?.data[0].attributes?.levels?.data[0].attributes?.chapters?.data[0]?.attributes;
     if (firstChapter) {
       redirect(

@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 
 declare global {
   interface Window {
-    YT: any; 
+    YT: any;
     onYouTubeIframeAPIReady?: () => void;
   }
 }
@@ -19,25 +19,21 @@ export const YouTubeEmbed = (props: YouTubeEmbedProps) => {
   const playerRef = useRef<any>(null);
 
   const onYouTubeIframeAPIReady = () => {
-
-      playerRef.current = new window.YT.Player('player', {
-        width: '853',
-        height: '480',
-        videoId: embedId,
-        playerVars: {
-          playsinline: 1
-        },
-        events: {
-          onStateChange: onPlayerStateChange
-        }
-      });
+    playerRef.current = new window.YT.Player('player', {
+      width: '853',
+      height: '480',
+      videoId: embedId,
+      playerVars: {
+        playsinline: 1
+      },
+      events: {
+        onStateChange: onPlayerStateChange
+      }
+    });
   };
-
 
   const onPlayerStateChange = (event: any) => {
     if (event.data === window.YT?.PlayerState?.ENDED) {
-      // Do something when the video ends
-      console.log('Video ended');
       if (hasEnded) {
         hasEnded(true);
       }
