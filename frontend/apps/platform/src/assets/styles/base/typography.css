@@ -30,16 +30,4 @@
     .subtitle1 {
         @apply header text-sm;
     }
-
-    .subtitle2 {
-        @apply font-bold uppercase text-[0.7rem];
-    }
-
-    .body1 {
-        @apply text-base;
-    }
-
-    .footnote {
-        @apply text-xs;
-    }
 }

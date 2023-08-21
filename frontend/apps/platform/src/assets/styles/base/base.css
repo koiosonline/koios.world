@@ -9,10 +9,6 @@
   
 
   body {
-    @apply flex flex-col min-h-full h-full bg-fill text-base;
-  }
-
-  .link {
-    @apply text-secondary hover:text-secondary-dark active:text-secondary/80;
+    @apply flex flex-col min-h-full h-full bg-fill text-base text-primary-950;
   }
 }

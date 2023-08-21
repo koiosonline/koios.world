@@ -14,7 +14,7 @@ export const ErrorBox = (props: ErrorBoxProps) => {
   const errorDescription = description ? description : <TranslatedString id="error.default.description" />;
 
   return (
-    <div className={` bg-error-50 p-4 h-fit rounded-lg max-w-3xl mx-auto ${className}`}>
+    <div className={` bg-error-50 p-4 h-fit rounded-lg max-w-3xl mx-auto my-16 ${className}`}>
       <Typography component="h2" variant="subtitle1" className="text-error-150">
         {errorTitle}
       </Typography>

@@ -1,7 +1,8 @@
 'use client';
 
 import { useQuery } from '@apollo/client';
-import { VideoPlayer } from '@frontend/jsx-core';
+import { LoaderBox, VideoPlayer } from '@frontend/jsx-core';
+import { TranslatedString } from 'apps/platform/src/I18N/components/TranslatedString';
 import { FurtherReadings } from 'apps/platform/src/Level/components/FurtherReadings';
 import {
   GetSubchapterDocument,
@@ -10,22 +11,26 @@ import {
 } from 'apps/platform/src/Level/components/graphql/operations.content.generated';
 import { transformToVideoPlayerNavigationList } from 'apps/platform/src/Level/transformers/transformToVideoPlayerNavigationList';
 import { Markdown } from 'apps/platform/src/RichContent/Markdown';
+import { ErrorBox } from 'apps/platform/src/shared/Error/ErrorBox';
 import { redirect, useParams } from 'next/navigation';
 
 const Page = () => {
   const params = useParams();
-  const [book, chapter, video] = params.level.split('/');
+  const [book, chapter, subchapter] = params.level.split('/');
 
-  // Get lesson content
+  // Get subchapter
   const { loading, error, data } = useQuery(GetSubchapterDocument, {
     variables: {
       filters: {
         Slug: {
-          eq: video
+          eq: subchapter
         }
+      },
+      pagination: {
+        limit: 50
       }
     },
-    skip: !video
+    skip: !subchapter
   });
 
   // Get subchapters of chapter
@@ -43,7 +48,7 @@ const Page = () => {
         }
       }
     },
-    skip: !chapter || !!video
+    skip: !chapter || !!subchapter
   });
 
   // Get subchapters of level
@@ -67,31 +72,40 @@ const Page = () => {
     skip: !!chapter
   });
 
-  const content = data?.subchapters?.data[0].attributes;
+  const content = data?.subchapters?.data[0]?.attributes;
   const contentList = transformToVideoPlayerNavigationList(content?.chapter?.data);
+  const isLoading = loading || subchaptersLoading || subchaptersOfLevelLoading;
+  const isError = error || subchaptersError || subchaptersOfLevelError;
+  const isNotFound = !content;
 
-  // If no video, redirect to first video in chapter
-  if (!video) {
-    const subchapter = subchaptersData?.subchapters?.data[0].attributes;
-    if (subchapter) {
-      redirect(`/${params.lang}/courses/${params.course}/${params.level}/${subchapter.Slug}`);
+  // If no subchapter, redirect to first subchapter of current chapter
+  if (!subchapter) {
+    const firstSubchapter = subchaptersData?.subchapters?.data[0]?.attributes;
+    if (firstSubchapter) {
+      redirect(`/${params.lang}/courses/${params.course}/${params.level}/${firstSubchapter.Slug}`);
     }
   }
 
   // If no chapter, redirect to first video in first chapter of level
   if (!chapter) {
-    const chapter = subchaptersOfLevelData?.courses?.data[0].attributes?.levels?.data[0].attributes?.chapters?.data[0].attributes;
-    if (chapter) {
-      redirect(`/${params.lang}/courses/${params.course}/${params.level}/${chapter.Slug}/${chapter.subchapters?.data[0].attributes?.Slug}`);
+    console.log('triggered chapter redirect')
+    const firstChapter = subchaptersOfLevelData?.courses?.data[0].attributes?.levels?.data[0].attributes?.chapters?.data[0]?.attributes;
+    if (firstChapter) {
+      redirect(
+        `/${params.lang}/courses/${params.course}/${params.level}/${firstChapter.Slug}/${firstChapter.subchapters?.data[0]?.attributes?.Slug}`
+      );
     }
   }
 
-  if (error || subchaptersError || subchaptersOfLevelError)
-    return <p>Error: {error?.message || subchaptersError?.message || subchaptersOfLevelError?.message}</p>;
-
-  if (loading || subchaptersLoading || subchaptersOfLevelLoading) return <p>Loading...</p>;
-
-  if (!content) return <p>Lesson not found</p>;
+  if (isError) return <ErrorBox />;
+  if (isLoading) return <LoaderBox />;
+  if (isNotFound)
+    return (
+      <ErrorBox
+        title={<TranslatedString id="subchapter.page.error.not-found.title" />}
+        description={<TranslatedString id="subchapter.page.error.not-found.description" />}
+      />
+    );
 
   return (
     <>
@@ -110,7 +124,7 @@ const Page = () => {
       </section>
 
       <section className="container max-w-3xl pb-20">
-          <FurtherReadings items={content.FurtherReadings} />
+        <FurtherReadings items={content.FurtherReadings} />
       </section>
     </>
   );

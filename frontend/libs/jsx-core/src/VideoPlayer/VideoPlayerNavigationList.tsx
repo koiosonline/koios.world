@@ -4,7 +4,7 @@ import { useParams, useRouter } from 'next/navigation';
 import { Typography } from '../Typography/Typography';
 import { Icon } from '../Icon/Icon';
 import { store } from '../utils/useStorage';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type NavigationItemSubchapters = {
   name: string;
@@ -22,10 +22,11 @@ type VideoPlayerNavigationListProps = {
   subtitle?: string;
   title?: string;
   fullWidth?: boolean;
+  isEnded?: boolean;
 };
 
 export const VideoPlayerNavigationList = (props: VideoPlayerNavigationListProps) => {
-  const { items, subtitle, title, fullWidth } = props;
+  const { items, subtitle, title, fullWidth, isEnded } = props;
   const router = useRouter();
   const params = useParams();
   const course = params.course;
@@ -41,8 +42,8 @@ export const VideoPlayerNavigationList = (props: VideoPlayerNavigationListProps)
     }
   };
 
-  const handleFinishedSubchapter = (e: React.MouseEvent, subchapterSlug: string) => {
-    e.stopPropagation();
+  const handleFinishedSubchapter = (subchapterSlug: string, e?: React.MouseEvent) => {
+    e?.stopPropagation();
 
     if (store.getJson(subchapterSlug)) {
       store.remove(subchapterSlug);
@@ -59,24 +60,42 @@ export const VideoPlayerNavigationList = (props: VideoPlayerNavigationListProps)
     }
   };
 
+  // Scroll to active subchapter
+  useEffect(() => {
+    const activeSubchapterItem = document.getElementById(subchapter);
+    const subchapterList = document.getElementById('subchapter-list');
+
+    if (activeSubchapterItem && subchapterList) {
+      const offset = activeSubchapterItem.offsetTop - 100;
+      subchapterList.scrollTop = offset;
+    }
+  }, [subchapter]);
+
+  // Set subchapter as watched if video has ended
+  useEffect(() => {
+    if (isEnded) {
+      handleFinishedSubchapter(subchapter);
+    }
+  }, [isEnded]);
+
   return (
     <section className={`w-2/5 bg-contrast-900 text-neutral-50 flex flex-col ${fullWidth ? 'w-full h-72' : ''}`}>
       {(title || subtitle) && (
         <div className="px-4 py-6 border-b-2">
           {subtitle && (
-            <Typography variant="subtitle2" className="-mb-1 font-normal">
+            <Typography className="-mb-1 font-normal text-[0.7rem] uppercase">
               {subtitle}
             </Typography>
           )}
           {title && (
-            <Typography component="h2" variant="body1" className="text-neutral-50 font-semibold normal-case">
+            <Typography component="h2" className="text-neutral-50 font-semibold normal-case">
               {title}
             </Typography>
           )}
         </div>
       )}
 
-      <div className="relative overflow-y-auto flex-1">
+      <div id="subchapter-list" className="relative overflow-y-auto flex-1">
         <ul className="absolute top-0 right-0 left-0 h-full ">
           {items.map((item) => (
             <li key={item.chapter}>
@@ -85,20 +104,21 @@ export const VideoPlayerNavigationList = (props: VideoPlayerNavigationListProps)
               </Typography>
 
               <ul>
-                {item.subchapters.map((subchapter) => (
+                {item.subchapters.map((subchapterItem) => (
                   <li
-                    onClick={() => handleLinkClick(subchapter.slug, item.chapterSlug)}
-                    key={subchapter.name}
-                    className={`bg-contrast-950 px-4 py-4 cursor-pointer flex items-center hover:bg-contrast-950/50 transition-all duration-200 ease-in-out 
-                    ${store.getJson(subchapter.slug) ? 'opacity-50' : ''} 
-                  }
+                    id={subchapterItem.slug}
+                    onClick={() => handleLinkClick(subchapterItem.slug, item.chapterSlug)}
+                    key={subchapterItem.name}
+                    className={`bg-contrast-950 px-4 py-4 cursor-pointer flex items-center hover:bg-neutral-400 transition-all duration-200 ease-in-out 
+                    ${store.getJson(subchapterItem.slug) ? 'opacity-50' : ''}
+                    ${subchapterItem.slug === subchapter ? ' bg-neutral-400' : ''}
                     `}
                   >
-                    <span onClick={(e) => handleFinishedSubchapter(e, subchapter.slug)}>
+                    <span onClick={(e) => handleFinishedSubchapter(subchapterItem.slug, e)}>
                       <Icon name="check-in-circle" className="mr-4 shrink-0 hover:opacity-50 transition-opacity duration-200 ease-in-out" />
                     </span>
                     <Typography variant="subtitle1" className="normal-case font-normal">
-                      {subchapter.name}
+                      {subchapterItem.name}
                     </Typography>
                   </li>
                 ))}

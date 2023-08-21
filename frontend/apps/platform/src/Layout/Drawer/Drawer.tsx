@@ -53,6 +53,7 @@ export const Drawer = (props: DrawerType) => {
                       href={item.href}
                       icon={item.icon}
                       isActive={isActive}
+                      newTab={item.newTab}
                     >
                       {item.name}
                     </DrawerLink>
@@ -64,11 +65,11 @@ export const Drawer = (props: DrawerType) => {
         ))}
       </div>
 
-      <div className="container mt-auto border-t-2 border-slate-200 py-2">
+      {/* <div className="container mt-auto border-t-2 border-slate-200 py-2">
         <DrawerLink href="/settings" icon="gear" isActive={isActive}>
           Settings
         </DrawerLink>
-      </div>
+      </div> */}
     </nav>
   );
 };
