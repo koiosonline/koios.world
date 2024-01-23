@@ -25,6 +25,8 @@ export default [
         "https://dev.koios.world",
         "https://content.koios.world",
         "https://aurora.quest",
+        "https://www.aurora.quest",
+        "https://www.aurora.quest/",
         "http://localhost:3000",
         "http://localhost:4200",
         "http://localhost:4201",
